@@ -314,6 +314,42 @@ body::before{mix-blend-mode:normal;opacity:.035}
 @media (min-width:901px){.rf.sola figure{flex:0 1 auto;width:100%;max-width:min(calc(50% - .35rem),calc(var(--ar,1)*68svh))}}
 @media (min-width:901px){.rf.grande figure{flex:0 1 auto;width:100%;max-width:min(100%,calc(var(--ar,1)*72svh))}}
 .zoom,.lbn,#tema-nj,.sw-nj,.menu-nj,.cerrar-nj,.opc-esq{display:none}
+
+/* ===== Celular: portada, menú, carrusel y navegación entre proyectos ===== */
+.vol{display:none}
+.menu-btn .m-c{display:none}
+@keyframes menu-in{from{opacity:0}to{opacity:1}}
+@media (max-width:900px){
+/* Portada: la foto llena la pantalla, recortada. --foco = qué parte queda al centro del recorte */
+:root{--foco:32% 50%}
+main{min-height:calc(100svh - var(--cab,4.5rem))}
+#inicio.activa{display:flex;align-items:stretch;min-height:calc(100svh - var(--cab,4.5rem))}
+.portada{flex:1 1 auto;width:100%;height:auto;min-height:0;max-height:none;aspect-ratio:auto;object-fit:cover;object-position:var(--foco)}
+/* Menú a pantalla completa, con fondo sólido */
+.marca,.menu-btn{position:relative;z-index:3}
+html:has(.lateral.abierto){overflow:hidden}
+.lateral.abierto .menu-btn .m-a{display:none}
+.lateral.abierto .menu-btn .m-c{display:inline}
+.lateral.abierto .panel{position:fixed;inset:0;z-index:2;width:auto;padding:var(--cab,4.5rem) 22px calc(1rem + env(safe-area-inset-bottom,0px));background:var(--fondo);animation:menu-in .18s ease-out}
+.lateral.abierto .panel nav{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:.4rem 0 1rem}
+.lateral.abierto .principal{font-size:1.05rem;padding:.7rem 0}
+.lateral.abierto .grupo{font-size:.9rem;margin-top:1rem}
+.lateral.abierto .lista li a{font-size:1rem;padding:.5rem 0}
+.lateral.abierto .opciones{flex:none;margin:.75rem 0 0}
+.lateral.abierto .idioma:not(.tema){padding:.6rem 1.1rem;font-size:.85rem}
+.lateral.abierto .panel>.aparte{flex:none;margin-top:1rem;padding-top:1rem}
+.lateral.abierto .principal.ts-nav{padding:.3rem 0}
+/* Carrusel: cada foto entera, al 86 % del ancho, con un borde de la siguiente asomando */
+.carrusel-pista{margin-inline:-22px;padding-inline:7vw;scroll-padding-inline:7vw;gap:.5rem;align-items:center}
+.carrusel-pista figure{flex:0 0 min(86vw,calc(var(--ar)*68svh));height:auto;aspect-ratio:auto;scroll-snap-align:center}
+.carrusel-pista .im{height:auto;aspect-ratio:var(--ar)}
+/* Volver / siguiente proyecto */
+.vol{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-top:clamp(3rem,8vh,4.5rem);padding-top:.3rem;border-top:1px solid var(--linea)}
+.vol a{display:block;padding:.9rem 0;font:400 .76rem/1.4 var(--f-dato);color:var(--sec);text-decoration:none}
+.vol a:hover,.vol a:active{color:var(--texto)}
+.vol .vol-sig{margin-left:auto;text-align:right}
+}
+@media (prefers-reduced-motion:reduce){.lateral.abierto .panel{animation:none}}
 </style>
 <noscript><style>
 .vista{display:none}
@@ -351,7 +387,7 @@ html{scroll-padding-top:5rem}
 .panel:target{display:flex}
 .cerrar-nj{display:grid;place-items:center;position:fixed;top:calc(.5rem + env(safe-area-inset-top,0px));right:.9rem;width:2.9rem;height:2.9rem;text-decoration:none;color:var(--texto);font:300 1.9rem/1 var(--f-tit)}
 .opciones{display:flex}
-#inicio{display:flex;align-items:center;min-height:calc(100svh - 4.4rem)}
+#inicio{display:flex;align-items:stretch;min-height:calc(100svh - 4.5rem)}
 }
 body:has(#la-forma-del-despojo:target) .lateral a[href="#la-forma-del-despojo"],body:has(#la-forma-del-despojo :target) .lateral a[href="#la-forma-del-despojo"]{font-weight:600}
 body:has(#la-insistencia-de-la-sombra:target) .lateral a[href="#la-insistencia-de-la-sombra"],body:has(#la-insistencia-de-la-sombra :target) .lateral a[href="#la-insistencia-de-la-sombra"]{font-weight:600}
@@ -373,7 +409,7 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <aside class="lateral" id="lateral">
 <a class="marca" href="#inicio">Agustina Recayte</a>
 <label for="tema-nj" class="sw-nj sw-m" title="Modo oscuro" aria-label="Modo oscuro"></label>
-<button type="button" class="menu-btn" aria-expanded="false" aria-controls="panel" data-en="Menu">Menú</button>
+<button type="button" class="menu-btn" aria-expanded="false" aria-controls="panel"><span class="m-a" data-en="Menu">Menú</span><span class="m-c" data-en="Close">Cerrar</span></button>
 <a class="menu-nj" href="#panel" aria-label="Abrir menú">Menú</a>
 <div class="panel" id="panel">
 <a class="cerrar-nj" href="#inicio" aria-label="Cerrar menú">&#215;</a>
@@ -409,7 +445,7 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <div class="opc-esq"><button type="button" class="idioma" aria-label="Español / English">ENG</button><button type="button" class="idioma tema" role="switch" aria-checked="false" aria-label="Modo oscuro" title="Modo oscuro"></button></div>
 <main>
 <div class="vista" id="inicio">
-<img class="portada" src="img/rastros/humo-2021-1500.webp" srcset="img/rastros/humo-2021-800.webp 800w, img/rastros/humo-2021-1200.webp 1200w, img/rastros/humo-2021-1500.webp 1500w, img/rastros/humo-2021-full.webp 2576w" sizes="(min-width:901px) 78vw, 100vw" width="2576" height="1942" fetchpriority="high" decoding="async" alt="" role="img" aria-label="Dibujo en carbón: obra de portada" data-en-label="Charcoal drawing: cover work">
+<img class="portada" src="img/rastros/humo-2021-1500.webp" srcset="img/rastros/humo-2021-800.webp 800w, img/rastros/humo-2021-1200.webp 1200w, img/rastros/humo-2021-1500.webp 1500w, img/rastros/humo-2021-full.webp 2576w" sizes="(min-width:901px) 78vw, (orientation:portrait) 260vw, 100vw" width="2576" height="1942" fetchpriority="high" decoding="async" alt="" role="img" aria-label="Dibujo en carbón: obra de portada" data-en-label="Charcoal drawing: cover work">
 </div>
 <div class="vista pagina" id="obra">
 <section>
@@ -448,6 +484,7 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <figure style="--ar:1.0"><img class="im" src="img/despojo/la-forma-del-despojo-6-1200.webp" srcset="img/despojo/la-forma-del-despojo-6-800.webp 800w, img/despojo/la-forma-del-despojo-6-1200.webp 1200w, img/despojo/la-forma-del-despojo-6-1500.webp 1500w" sizes="(min-width:901px) 23vw, 92vw" width="800" height="800" loading="lazy" decoding="async" alt="" data-full="img/despojo/la-forma-del-despojo-6-full.webp" role="img" aria-label="Dibujo en carbón de arcos de trazos grises con una mancha blanca a la derecha" data-en-label="Charcoal drawing of arcs of gray strokes with a white patch on the right"><a class="zoom" id="f-despojo6" href="#z-despojo6" aria-label="Ampliar imagen"></a><figcaption data-en="La forma del despojo, 2026. Polyptych, charcoal on paper, 100 x 150 cm. Panel 6 of 6.">La forma del despojo, 2026. Políptico, carbón sobre papel, 100 x 150 cm. Panel 6 de 6.</figcaption></figure>
 </div>
 </div>
+<nav class="vol" aria-label="Entre proyectos" data-en-label="Between projects"><a class="vol-menu" href="#panel" data-en="← Projects">← Proyectos</a><a class="vol-sig" href="#la-insistencia-de-la-sombra" data-en="Next project →">Siguiente proyecto →</a></nav>
 </article>
 </div>
 </section>
@@ -479,6 +516,7 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <figure style="--ar:0.6677"><img class="im" src="img/insistencia/estetica-del-silencio-2024-montaje-full.webp" srcset="img/insistencia/estetica-del-silencio-2024-montaje-800.webp 534w, img/insistencia/estetica-del-silencio-2024-montaje-full.webp 844w" sizes="(min-width:901px) 31vw, 92vw" width="534" height="800" loading="lazy" decoding="async" alt="" data-full="img/insistencia/estetica-del-silencio-2024-montaje-full.webp" role="img" aria-label="Vista de sala: dibujo en carbón de humo y nubes colgado de una barra negra, con un montículo de carbón en el suelo" data-en-label="Installation view: charcoal drawing of smoke and clouds hanging from a black bar, with a mound of charcoal on the floor"><a class="zoom" id="f-algunos2" href="#z-algunos2" aria-label="Ampliar imagen"></a><figcaption data-en="Estética del silencio, 2024. Charcoal on paper, 150 x 100 cm. Installation view.">Estética del silencio, 2024. Carbón sobre papel, 150 x 100 cm. Vista de montaje.</figcaption></figure>
 </div>
 </div>
+<nav class="vol" aria-label="Entre proyectos" data-en-label="Between projects"><a class="vol-menu" href="#panel" data-en="← Projects">← Proyectos</a><a class="vol-sig" href="#algunos-rasgunos-disipan-la-llama" data-en="Next project →">Siguiente proyecto →</a></nav>
 </article>
 </div>
 </section>
@@ -517,6 +555,7 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <figure style="--ar:2.0703"><img class="im" src="img/algunos/fuego-2021-triptico-1200.webp" srcset="img/algunos/fuego-2021-triptico-800.webp 800w, img/algunos/fuego-2021-triptico-1200.webp 1200w, img/algunos/fuego-2021-triptico-1500.webp 1500w" sizes="(min-width:901px) 71vw, 92vw" width="800" height="386" loading="lazy" decoding="async" alt="" data-full="img/algunos/fuego-2021-triptico-full.webp" role="img" aria-label="Tríptico de tres dibujos en carbón con formas de humo claro sobre fondo negro, colgados uno al lado del otro" data-en-label="Triptych of three charcoal drawings with light smoke shapes on a black background, hung side by side"><a class="zoom" id="f-algunos15" href="#z-algunos15" aria-label="Ampliar imagen"></a><figcaption data-en="Fuego, 2021. Triptych. Charcoal on paper, 46 x 95 cm.">Fuego, 2021. Tríptico. Carbón sobre papel, 46 x 95 cm.</figcaption></figure>
 </div>
 </div>
+<nav class="vol" aria-label="Entre proyectos" data-en-label="Between projects"><a class="vol-menu" href="#panel" data-en="← Projects">← Proyectos</a><a class="vol-sig" href="#rastros" data-en="Next project →">Siguiente proyecto →</a></nav>
 </article>
 </div>
 </section>
@@ -563,6 +602,7 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <figure style="--ar:1.4319"><img class="im" src="img/rastros/sin-titulo-1200.webp" srcset="img/rastros/sin-titulo-800.webp 800w, img/rastros/sin-titulo-1200.webp 1200w, img/rastros/sin-titulo-1500.webp 1500w" sizes="(min-width:901px) 71vw, 92vw" width="800" height="559" loading="lazy" decoding="async" alt="" data-full="img/rastros/sin-titulo-full.webp" role="img" aria-label="Dibujo en carbón de una forma clara y nubosa que emerge de un fondo oscuro de trazos verticales" data-en-label="Charcoal drawing of a light, cloudy shape emerging from a dark background of vertical strokes"><a class="zoom" id="f-rastros9" href="#z-rastros9" aria-label="Ampliar imagen"></a><figcaption>Jardín de nubes, 2024. Carbón.</figcaption></figure>
 </div>
 </div>
+<nav class="vol" aria-label="Entre proyectos" data-en-label="Between projects"><a class="vol-menu" href="#panel" data-en="← Projects">← Proyectos</a><a class="vol-sig" href="#equilibristas" data-en="Next project →">Siguiente proyecto →</a></nav>
 </article>
 </div>
 </section>
@@ -591,6 +631,7 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 </div>
 </div>
 <p class="pie-texto" data-en="From the city to the forest, a rope is carefully tightened. Beneath it lies an abyss that is neither the city nor the forest. The tightrope walker is nothing but the rope, and the quest is not for balance but for a state of risk.">De la ciudad al bosque, se tensa con cuidado una cuerda. Por debajo subyace un abismo que no es ni la ciudad, ni el bosque. El equilibrista no es sino la cuerda y su búsqueda no es el equilibrio sino el estado de riesgo.</p>
+<nav class="vol" aria-label="Entre proyectos" data-en-label="Between projects"><a class="vol-menu" href="#panel" data-en="← Projects">← Proyectos</a><a class="vol-sig" href="#bosque" data-en="Next project →">Siguiente proyecto →</a></nav>
 </article>
 </div>
 </section>
@@ -627,6 +668,7 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <figure style="--ar:1.5119"><img class="im" src="img/bosque/jardin-de-invierno-ii-2019-1200.webp" srcset="img/bosque/jardin-de-invierno-ii-2019-800.webp 800w, img/bosque/jardin-de-invierno-ii-2019-1200.webp 1200w, img/bosque/jardin-de-invierno-ii-2019-1500.webp 1500w" sizes="(min-width:901px) 71vw, 92vw" width="800" height="529" loading="lazy" decoding="async" alt="" data-full="img/bosque/jardin-de-invierno-ii-2019-full.webp" role="img" aria-label="Dibujo en carbón de un bosque cubierto de niebla, con copas de árboles que emergen en la parte superior" data-en-label="Charcoal drawing of a mist-covered forest, with treetops emerging at the top"><a class="zoom" id="f-bosque4" href="#z-bosque4" aria-label="Ampliar imagen"></a><figcaption data-en="Jardín de invierno II, 2019. Charcoal on paper, 18 x 25 cm.">Jardín de invierno II, 2019. Carbón sobre papel, 18 x 25 cm.</figcaption></figure>
 </div>
 </div>
+<nav class="vol" aria-label="Entre proyectos" data-en-label="Between projects"><a class="vol-menu" href="#panel" data-en="← Projects">← Proyectos</a><a class="vol-sig" href="#losotros" data-en="Next project →">Siguiente proyecto →</a></nav>
 </article>
 </div>
 </section>
@@ -663,6 +705,7 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <figure style="--ar:0.7194"><img class="im" src="img/los-otros/la-escondida-2019-1500.webp" srcset="img/los-otros/la-escondida-2019-800.webp 800w, img/los-otros/la-escondida-2019-1200.webp 864w, img/los-otros/la-escondida-2019-1500.webp 1500w" sizes="(min-width:901px) 24vw, 92vw" width="800" height="1112" loading="lazy" decoding="async" alt="" data-full="img/los-otros/la-escondida-2019-full.webp" role="img" aria-label="Obra en tinta, pasteles y carbón de una figura de perfil, con el cabello cubriéndole parte del rostro, sobre un fondo oscuro" data-en-label="Work in ink, pastels and charcoal of a figure in profile, hair covering part of the face, on a dark background"><a class="zoom" id="f-losotros6" href="#z-losotros6" aria-label="Ampliar imagen"></a><figcaption data-en="La escondida, 2019. Ink, pastels and charcoal on board, 70 x 50 cm.">La escondida, 2019. Tinta, pasteles y carbón sobre tabla, 70 x 50 cm.</figcaption></figure>
 </div>
 </div>
+<nav class="vol" aria-label="Entre proyectos" data-en-label="Between projects"><a class="vol-menu" href="#panel" data-en="← Projects">← Proyectos</a><a class="vol-sig" href="#un-lugar" data-en="Next project →">Siguiente proyecto →</a></nav>
 </article>
 </div>
 </section>
@@ -690,6 +733,7 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 </div>
 <p class="creditos" data-en="Concept and overall realization: Agustina Recayte&lt;br&gt;Audiovisual direction, camera and editing: Clara Aguillón&lt;br&gt;Artistic collaboration: Julieta Crespi">Idea y realización general: Agustina Recayte<br>Dirección audiovisual, cámara y montaje: Clara Aguillón<br>Colaboración artística: Julieta Crespi</p>
 <div class="logo-pie sf"><img class="lg-n" src="img/logos/logo-fna-negro.webp" width="700" height="425" loading="lazy" decoding="async" alt="Fondo Nacional de las Artes" style="height:84px"><img class="lg-b" src="img/logos/logo-fna-claro.webp" width="700" height="425" loading="lazy" decoding="async" alt="" aria-hidden="true" style="height:84px"></div>
+<nav class="vol" aria-label="Entre proyectos" data-en-label="Between projects"><a class="vol-menu" href="#panel" data-en="← Projects">← Proyectos</a><a class="vol-sig" href="#tengo-que-contarte-algo" data-en="Next project →">Siguiente proyecto →</a></nav>
 </article>
 </div>
 </section>
@@ -718,20 +762,20 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <div class="carrusel obras">
 <button type="button" class="carrusel-bt" data-d="-1" aria-label="Anterior">&#8249;</button>
 <div class="carrusel-pista">
-<figure style="--ar:1.5038"><img class="im" src="img/fotolibro/detalle-10-1200.webp" srcset="img/fotolibro/detalle-10-800.webp 800w, img/fotolibro/detalle-10-1200.webp 1200w, img/fotolibro/detalle-10-1500.webp 1500w" sizes="(min-width:901px) 867px, 632px" width="800" height="532" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-10-full.webp" role="img" aria-label="Detalle de una placa negra con la frase «tengo que contarte algo» escrita a mano en trazo blanco" data-en-label="Detail of a black plate with the phrase “tengo que contarte algo” handwritten in white strokes"><a class="zoom" id="f-tcp10" href="#z-tcp10" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
-<figure style="--ar:1.3565"><img class="im" src="img/fotolibro/detalle-01-1200.webp" srcset="img/fotolibro/detalle-01-800.webp 800w, img/fotolibro/detalle-01-1200.webp 1200w, img/fotolibro/detalle-01-1500.webp 1500w" sizes="(min-width:901px) 782px, 570px" width="800" height="590" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-01-full.webp" role="img" aria-label="Detalle de una placa negra con una nota manuscrita en trazo blanco" data-en-label="Detail of a black plate with a handwritten note in white strokes"><a class="zoom" id="f-tcp1" href="#z-tcp1" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
-<figure style="--ar:1.3410"><img class="im" src="img/fotolibro/detalle-02-1200.webp" srcset="img/fotolibro/detalle-02-800.webp 800w, img/fotolibro/detalle-02-1200.webp 1200w, img/fotolibro/detalle-02-1500.webp 1500w" sizes="(min-width:901px) 773px, 564px" width="800" height="597" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-02-full.webp" role="img" aria-label="Detalle de una placa negra con una nota manuscrita en trazo blanco" data-en-label="Detail of a black plate with a handwritten note in white strokes"><a class="zoom" id="f-tcp2" href="#z-tcp2" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
-<figure style="--ar:0.7399"><img class="im" src="img/fotolibro/detalle-03-1500.webp" srcset="img/fotolibro/detalle-03-800.webp 592w, img/fotolibro/detalle-03-1200.webp 888w, img/fotolibro/detalle-03-1500.webp 1110w" sizes="(min-width:901px) 427px, 311px" width="592" height="800" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-03-full.webp" role="img" aria-label="Detalle de una placa negra con una nota manuscrita en trazo blanco" data-en-label="Detail of a black plate with a handwritten note in white strokes"><a class="zoom" id="f-tcp3" href="#z-tcp3" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
-<figure style="--ar:0.7387"><img class="im" src="img/fotolibro/detalle-04-1500.webp" srcset="img/fotolibro/detalle-04-800.webp 591w, img/fotolibro/detalle-04-1200.webp 886w, img/fotolibro/detalle-04-1500.webp 1108w" sizes="(min-width:901px) 426px, 311px" width="591" height="800" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-04-full.webp" role="img" aria-label="Detalle de una placa negra con una nota manuscrita en trazo blanco" data-en-label="Detail of a black plate with a handwritten note in white strokes"><a class="zoom" id="f-tcp4" href="#z-tcp4" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
-<figure style="--ar:1.3508"><img class="im" src="img/fotolibro/detalle-05-1200.webp" srcset="img/fotolibro/detalle-05-800.webp 800w, img/fotolibro/detalle-05-1200.webp 1200w, img/fotolibro/detalle-05-1500.webp 1500w" sizes="(min-width:901px) 779px, 568px" width="800" height="592" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-05-full.webp" role="img" aria-label="Detalle de una placa negra con una nota manuscrita en trazo blanco" data-en-label="Detail of a black plate with a handwritten note in white strokes"><a class="zoom" id="f-tcp5" href="#z-tcp5" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
-<figure style="--ar:0.7555"><img class="im" src="img/fotolibro/detalle-06-1500.webp" srcset="img/fotolibro/detalle-06-800.webp 604w, img/fotolibro/detalle-06-1200.webp 907w, img/fotolibro/detalle-06-1500.webp 1133w" sizes="(min-width:901px) 436px, 318px" width="604" height="800" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-06-full.webp" role="img" aria-label="Detalle de una placa negra con una nota manuscrita en trazo blanco" data-en-label="Detail of a black plate with a handwritten note in white strokes"><a class="zoom" id="f-tcp6" href="#z-tcp6" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
-<figure style="--ar:1.3183"><img class="im" src="img/fotolibro/detalle-07-1200.webp" srcset="img/fotolibro/detalle-07-800.webp 800w, img/fotolibro/detalle-07-1200.webp 1200w, img/fotolibro/detalle-07-1500.webp 1500w" sizes="(min-width:901px) 760px, 554px" width="800" height="607" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-07-full.webp" role="img" aria-label="Detalle de una placa negra con una nota manuscrita en trazo blanco" data-en-label="Detail of a black plate with a handwritten note in white strokes"><a class="zoom" id="f-tcp7" href="#z-tcp7" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
-<figure style="--ar:1.3494"><img class="im" src="img/fotolibro/detalle-08-1200.webp" srcset="img/fotolibro/detalle-08-800.webp 800w, img/fotolibro/detalle-08-1200.webp 1200w, img/fotolibro/detalle-08-1500.webp 1500w" sizes="(min-width:901px) 778px, 567px" width="800" height="593" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-08-full.webp" role="img" aria-label="Detalle de una placa negra con una nota manuscrita en trazo blanco" data-en-label="Detail of a black plate with a handwritten note in white strokes"><a class="zoom" id="f-tcp8" href="#z-tcp8" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
-<figure style="--ar:1.3424"><img class="im" src="img/fotolibro/detalle-09-1200.webp" srcset="img/fotolibro/detalle-09-800.webp 800w, img/fotolibro/detalle-09-1200.webp 1200w, img/fotolibro/detalle-09-1500.webp 1500w" sizes="(min-width:901px) 774px, 564px" width="800" height="596" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-09-full.webp" role="img" aria-label="Detalle de una placa negra con una nota manuscrita en trazo blanco" data-en-label="Detail of a black plate with a handwritten note in white strokes"><a class="zoom" id="f-tcp9" href="#z-tcp9" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
-<figure style="--ar:1.4994"><img class="im" src="img/fotolibro/detalle-11-1200.webp" srcset="img/fotolibro/detalle-11-800.webp 800w, img/fotolibro/detalle-11-1200.webp 1200w, img/fotolibro/detalle-11-1500.webp 1500w" sizes="(min-width:901px) 864px, 630px" width="800" height="534" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-11-full.webp" role="img" aria-label="Detalle de una placa negra con una nota manuscrita en trazo blanco" data-en-label="Detail of a black plate with a handwritten note in white strokes"><a class="zoom" id="f-tcp11" href="#z-tcp11" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
-<figure style="--ar:1.4882"><img class="im" src="img/fotolibro/detalle-12-1200.webp" srcset="img/fotolibro/detalle-12-800.webp 800w, img/fotolibro/detalle-12-1200.webp 1200w, img/fotolibro/detalle-12-1500.webp 1500w" sizes="(min-width:901px) 858px, 626px" width="800" height="538" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-12-full.webp" role="img" aria-label="Detalle de una placa negra con una nota manuscrita en trazo blanco" data-en-label="Detail of a black plate with a handwritten note in white strokes"><a class="zoom" id="f-tcp12" href="#z-tcp12" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
-<figure style="--ar:1.4873"><img class="im" src="img/fotolibro/detalle-13-1200.webp" srcset="img/fotolibro/detalle-13-800.webp 800w, img/fotolibro/detalle-13-1200.webp 1200w, img/fotolibro/detalle-13-1500.webp 1500w" sizes="(min-width:901px) 857px, 625px" width="800" height="538" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-13-full.webp" role="img" aria-label="Detalle de una placa negra con una nota manuscrita en trazo blanco" data-en-label="Detail of a black plate with a handwritten note in white strokes"><a class="zoom" id="f-tcp13" href="#z-tcp13" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
-<figure style="--ar:0.6522"><img class="im" src="img/fotolibro/detalle-14-1500.webp" srcset="img/fotolibro/detalle-14-800.webp 522w, img/fotolibro/detalle-14-1200.webp 783w, img/fotolibro/detalle-14-1500.webp 978w" sizes="(min-width:901px) 376px, 274px" width="522" height="800" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-14-full.webp" role="img" aria-label="Detalle de una placa negra con una nota manuscrita en trazo blanco" data-en-label="Detail of a black plate with a handwritten note in white strokes"><a class="zoom" id="f-tcp14" href="#z-tcp14" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
+<figure style="--ar:1.5038"><img class="im" src="img/fotolibro/detalle-10-1200.webp" srcset="img/fotolibro/detalle-10-800.webp 800w, img/fotolibro/detalle-10-1200.webp 1200w, img/fotolibro/detalle-10-1500.webp 1500w" sizes="(min-width:901px) 867px, 86vw" width="800" height="532" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-10-full.webp" role="img" aria-label="Detalle de una placa negra con la frase «tengo que contarte algo» escrita a mano en trazo blanco" data-en-label="Detail of a black plate with the phrase “tengo que contarte algo” handwritten in white strokes"><a class="zoom" id="f-tcp10" href="#z-tcp10" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
+<figure style="--ar:1.3565"><img class="im" src="img/fotolibro/detalle-01-1200.webp" srcset="img/fotolibro/detalle-01-800.webp 800w, img/fotolibro/detalle-01-1200.webp 1200w, img/fotolibro/detalle-01-1500.webp 1500w" sizes="(min-width:901px) 782px, 86vw" width="800" height="590" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-01-full.webp" role="img" aria-label="Detalle de una placa negra con una nota manuscrita en trazo blanco" data-en-label="Detail of a black plate with a handwritten note in white strokes"><a class="zoom" id="f-tcp1" href="#z-tcp1" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
+<figure style="--ar:1.3410"><img class="im" src="img/fotolibro/detalle-02-1200.webp" srcset="img/fotolibro/detalle-02-800.webp 800w, img/fotolibro/detalle-02-1200.webp 1200w, img/fotolibro/detalle-02-1500.webp 1500w" sizes="(min-width:901px) 773px, 86vw" width="800" height="597" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-02-full.webp" role="img" aria-label="Detalle de una placa negra con una nota manuscrita en trazo blanco" data-en-label="Detail of a black plate with a handwritten note in white strokes"><a class="zoom" id="f-tcp2" href="#z-tcp2" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
+<figure style="--ar:0.7399"><img class="im" src="img/fotolibro/detalle-03-1500.webp" srcset="img/fotolibro/detalle-03-800.webp 592w, img/fotolibro/detalle-03-1200.webp 888w, img/fotolibro/detalle-03-1500.webp 1110w" sizes="(min-width:901px) 427px, 86vw" width="592" height="800" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-03-full.webp" role="img" aria-label="Detalle de una placa negra con una nota manuscrita en trazo blanco" data-en-label="Detail of a black plate with a handwritten note in white strokes"><a class="zoom" id="f-tcp3" href="#z-tcp3" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
+<figure style="--ar:0.7387"><img class="im" src="img/fotolibro/detalle-04-1500.webp" srcset="img/fotolibro/detalle-04-800.webp 591w, img/fotolibro/detalle-04-1200.webp 886w, img/fotolibro/detalle-04-1500.webp 1108w" sizes="(min-width:901px) 426px, 86vw" width="591" height="800" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-04-full.webp" role="img" aria-label="Detalle de una placa negra con una nota manuscrita en trazo blanco" data-en-label="Detail of a black plate with a handwritten note in white strokes"><a class="zoom" id="f-tcp4" href="#z-tcp4" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
+<figure style="--ar:1.3508"><img class="im" src="img/fotolibro/detalle-05-1200.webp" srcset="img/fotolibro/detalle-05-800.webp 800w, img/fotolibro/detalle-05-1200.webp 1200w, img/fotolibro/detalle-05-1500.webp 1500w" sizes="(min-width:901px) 779px, 86vw" width="800" height="592" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-05-full.webp" role="img" aria-label="Detalle de una placa negra con una nota manuscrita en trazo blanco" data-en-label="Detail of a black plate with a handwritten note in white strokes"><a class="zoom" id="f-tcp5" href="#z-tcp5" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
+<figure style="--ar:0.7555"><img class="im" src="img/fotolibro/detalle-06-1500.webp" srcset="img/fotolibro/detalle-06-800.webp 604w, img/fotolibro/detalle-06-1200.webp 907w, img/fotolibro/detalle-06-1500.webp 1133w" sizes="(min-width:901px) 436px, 86vw" width="604" height="800" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-06-full.webp" role="img" aria-label="Detalle de una placa negra con una nota manuscrita en trazo blanco" data-en-label="Detail of a black plate with a handwritten note in white strokes"><a class="zoom" id="f-tcp6" href="#z-tcp6" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
+<figure style="--ar:1.3183"><img class="im" src="img/fotolibro/detalle-07-1200.webp" srcset="img/fotolibro/detalle-07-800.webp 800w, img/fotolibro/detalle-07-1200.webp 1200w, img/fotolibro/detalle-07-1500.webp 1500w" sizes="(min-width:901px) 760px, 86vw" width="800" height="607" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-07-full.webp" role="img" aria-label="Detalle de una placa negra con una nota manuscrita en trazo blanco" data-en-label="Detail of a black plate with a handwritten note in white strokes"><a class="zoom" id="f-tcp7" href="#z-tcp7" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
+<figure style="--ar:1.3494"><img class="im" src="img/fotolibro/detalle-08-1200.webp" srcset="img/fotolibro/detalle-08-800.webp 800w, img/fotolibro/detalle-08-1200.webp 1200w, img/fotolibro/detalle-08-1500.webp 1500w" sizes="(min-width:901px) 778px, 86vw" width="800" height="593" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-08-full.webp" role="img" aria-label="Detalle de una placa negra con una nota manuscrita en trazo blanco" data-en-label="Detail of a black plate with a handwritten note in white strokes"><a class="zoom" id="f-tcp8" href="#z-tcp8" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
+<figure style="--ar:1.3424"><img class="im" src="img/fotolibro/detalle-09-1200.webp" srcset="img/fotolibro/detalle-09-800.webp 800w, img/fotolibro/detalle-09-1200.webp 1200w, img/fotolibro/detalle-09-1500.webp 1500w" sizes="(min-width:901px) 774px, 86vw" width="800" height="596" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-09-full.webp" role="img" aria-label="Detalle de una placa negra con una nota manuscrita en trazo blanco" data-en-label="Detail of a black plate with a handwritten note in white strokes"><a class="zoom" id="f-tcp9" href="#z-tcp9" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
+<figure style="--ar:1.4994"><img class="im" src="img/fotolibro/detalle-11-1200.webp" srcset="img/fotolibro/detalle-11-800.webp 800w, img/fotolibro/detalle-11-1200.webp 1200w, img/fotolibro/detalle-11-1500.webp 1500w" sizes="(min-width:901px) 864px, 86vw" width="800" height="534" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-11-full.webp" role="img" aria-label="Detalle de una placa negra con una nota manuscrita en trazo blanco" data-en-label="Detail of a black plate with a handwritten note in white strokes"><a class="zoom" id="f-tcp11" href="#z-tcp11" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
+<figure style="--ar:1.4882"><img class="im" src="img/fotolibro/detalle-12-1200.webp" srcset="img/fotolibro/detalle-12-800.webp 800w, img/fotolibro/detalle-12-1200.webp 1200w, img/fotolibro/detalle-12-1500.webp 1500w" sizes="(min-width:901px) 858px, 86vw" width="800" height="538" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-12-full.webp" role="img" aria-label="Detalle de una placa negra con una nota manuscrita en trazo blanco" data-en-label="Detail of a black plate with a handwritten note in white strokes"><a class="zoom" id="f-tcp12" href="#z-tcp12" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
+<figure style="--ar:1.4873"><img class="im" src="img/fotolibro/detalle-13-1200.webp" srcset="img/fotolibro/detalle-13-800.webp 800w, img/fotolibro/detalle-13-1200.webp 1200w, img/fotolibro/detalle-13-1500.webp 1500w" sizes="(min-width:901px) 857px, 86vw" width="800" height="538" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-13-full.webp" role="img" aria-label="Detalle de una placa negra con una nota manuscrita en trazo blanco" data-en-label="Detail of a black plate with a handwritten note in white strokes"><a class="zoom" id="f-tcp13" href="#z-tcp13" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
+<figure style="--ar:0.6522"><img class="im" src="img/fotolibro/detalle-14-1500.webp" srcset="img/fotolibro/detalle-14-800.webp 522w, img/fotolibro/detalle-14-1200.webp 783w, img/fotolibro/detalle-14-1500.webp 978w" sizes="(min-width:901px) 376px, 86vw" width="522" height="800" loading="lazy" decoding="async" alt="" data-full="img/fotolibro/detalle-14-full.webp" role="img" aria-label="Detalle de una placa negra con una nota manuscrita en trazo blanco" data-en-label="Detail of a black plate with a handwritten note in white strokes"><a class="zoom" id="f-tcp14" href="#z-tcp14" aria-label="Ampliar imagen"></a><figcaption></figcaption></figure>
 </div>
 <button type="button" class="carrusel-bt" data-d="1" aria-label="Siguiente">&#8250;</button>
 </div>
@@ -739,6 +783,7 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <a class="enlace-ext" href="https://fido.palermo.edu/servicios_dyc/publicacionesdc/cuadernos/detalle_publicacion.php?id_libro=972" target="_blank" rel="noopener" data-en="Article published in the magazine Cuadernos del Centro de Estudios en Diseño y Comunicación, edited by the Facultad de Diseño y Comunicación of the Universidad de Palermo. By Andrés Olaizola.">Artículo publicado en la revista Cuadernos del Centro de Estudios en Diseño y Comunicación, editada por la Facultad de Diseño y Comunicación de la Universidad de Palermo. Por Andrés Olaizola.</a>
 </div>
 <div class="logo-pie sf"><div class="logo-doble"><img class="lg-n" src="img/logos/logo-mecenazgo-negro.webp" width="500" height="120" loading="lazy" decoding="async" alt="Mecenazgo Cultural" style="height:44px"><img class="lg-b" src="img/logos/logo-mecenazgo-claro.webp" width="500" height="120" loading="lazy" decoding="async" alt="" aria-hidden="true" style="height:44px"><img class="lg-n" src="img/logos/logo-fna-negro.webp" width="700" height="425" loading="lazy" decoding="async" alt="Fondo Nacional de las Artes" style="height:72px"><img class="lg-b" src="img/logos/logo-fna-claro.webp" width="700" height="425" loading="lazy" decoding="async" alt="" aria-hidden="true" style="height:72px"></div></div>
+<nav class="vol" aria-label="Entre proyectos" data-en-label="Between projects"><a class="vol-menu" href="#panel" data-en="← Projects">← Proyectos</a><a class="vol-sig" href="#la-forma-del-despojo" data-en="Next project →">Siguiente proyecto →</a></nav>
 </article>
 </div>
 </section>
@@ -899,10 +944,12 @@ mb.addEventListener('click',function(){
   var a=lat.classList.toggle('abierto');
   mb.setAttribute('aria-expanded',a?'true':'false');
 });
+var actual='inicio';
 function ruta(){
   var id=(location.hash||'#inicio').slice(1);
   var v=document.getElementById(id);
   if(!v||!v.classList.contains('vista')){id='inicio';v=document.getElementById('inicio')}
+  actual=id;
   document.querySelectorAll('.vista').forEach(function(x){x.classList.toggle('activa',x===v)});
   lat.querySelectorAll('a').forEach(function(a){
     if(a.getAttribute('href')==='#'+id)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
@@ -914,6 +961,12 @@ function ruta(){
   window.scrollTo(0,0);
 }
 window.addEventListener('hashchange',ruta);ruta();
+function cab(){h.style.setProperty('--cab',lat.offsetHeight+'px')}
+cab();window.addEventListener('resize',cab);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(cab);
+function cerrarMenu(){lat.classList.remove('abierto');mb.setAttribute('aria-expanded','false')}
+document.querySelectorAll('.vol-menu').forEach(function(a){a.addEventListener('click',function(ev){ev.preventDefault();abrirAc(true);lat.classList.add('abierto');mb.setAttribute('aria-expanded','true')})});
+lat.addEventListener('click',function(ev){var a=ev.target.closest('a[href^="#"]');if(a&&a.getAttribute('href')==='#'+actual)cerrarMenu()});
+document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&lat.classList.contains('abierto')){cerrarMenu();mb.focus()}});
 
 document.querySelectorAll('.video-poster[data-yt]').forEach(function(p){
   p.addEventListener('click',function(){

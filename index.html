@@ -301,10 +301,10 @@ body::before{mix-blend-mode:normal;opacity:.035}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (max-width:900px){.ts-head{display:block}.ts-cols{grid-template-columns:1fr}.ts-foto{order:-1;position:static}.principal.ts-nav{padding:.7rem 0}}
 @media (prefers-reduced-motion:reduce){.ts-img>div{transition:none}}
-@media (min-width:901px){:root{--barra:3.6rem}.opciones{position:fixed;z-index:15;top:0;left:var(--ancho-lat);right:0;height:var(--barra);margin:0;padding:0 22px;flex-wrap:nowrap;justify-content:flex-end;align-items:center;background:var(--fondo);border-bottom:1px solid var(--linea)}.opciones .tema{align-self:center;height:1.6rem}main{padding-top:var(--barra)}html{scroll-padding-top:var(--barra)}.portada{min-height:calc(100svh - var(--barra))}.ts-foto{top:calc(var(--pad) + var(--barra))}}
+@media (min-width:901px){.opciones{display:none}body .opc-esq{display:flex;position:absolute;top:16px;right:22px;z-index:15;gap:.5rem;align-items:center;color:#fff;mix-blend-mode:difference}.opc-esq .idioma{color:#fff;border-color:#fff}.opc-esq .idioma:hover{border-color:#fff;opacity:.7}.opc-esq .tema{align-self:center;height:1.6rem}.opc-esq .tema::after{border-color:#fff}.opc-esq .tema[aria-checked="true"]::after{background:#fff}}
 @media (min-width:901px){.rf.sola figure{flex:0 1 auto;width:100%;max-width:min(calc(50% - .35rem),calc(var(--ar,1)*68svh))}}
 @media (min-width:901px){.rf.grande figure{flex:0 1 auto;width:100%;max-width:min(100%,calc(var(--ar,1)*72svh))}}
-.zoom,.lbn,#tema-nj,.sw-nj,.menu-nj,.cerrar-nj{display:none}
+.zoom,.lbn,#tema-nj,.sw-nj,.menu-nj,.cerrar-nj,.opc-esq{display:none}
 </style>
 <noscript><style>
 .vista{display:none}
@@ -397,6 +397,7 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <div class="aparte"><a class="principal ts-nav" href="#taller-secreto" aria-label="Taller Secreto"><img class="lg-n " src="img/logos/logo-03-negro.webp" width="600" height="186" alt="Taller Secreto"><img loading="lazy" decoding="async" class="lg-b " src="img/logos/logo-03-claro.webp" width="600" height="186" alt="" aria-hidden="true"></a></div>
 </div>
 </aside>
+<div class="opc-esq"><button type="button" class="idioma" aria-label="Español / English">ENG</button><button type="button" class="idioma tema" role="switch" aria-checked="false" aria-label="Modo oscuro" title="Modo oscuro"></button></div>
 <main>
 <div class="vista" id="inicio">
 <img class="portada" src="img/rastros/humo-2021-1500.webp" srcset="img/rastros/humo-2021-800.webp 800w, img/rastros/humo-2021-1200.webp 1200w, img/rastros/humo-2021-1500.webp 1500w, img/rastros/humo-2021-full.webp 2576w" sizes="(min-width:901px) 78vw, 100vw" width="2576" height="1942" fetchpriority="high" decoding="async" alt="" role="img" aria-label="Dibujo en carbón: obra de portada" data-en-label="Charcoal drawing: cover work">
@@ -832,7 +833,8 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <div class="cont">
 <p><a href="mailto:marecayte@gmail.com">marecayte@gmail.com</a></p>
 <p><a href="https://www.instagram.com/agustina.rec">Instagram</a> · <a href="https://www.youtube.com/@agustinarecayte1975">YouTube</a></p>
-<p>San Carlos de Bariloche, Río Negro. Arg.</p>
+<p>San Carlos de Bariloche, Río Negro.</p>
+<p>Argentina</p>
 </div>
 </section>
 </div>
@@ -840,9 +842,9 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <script>
 (function(){
 var h=document.documentElement;
-var bi=document.querySelector('.idioma'),bt=document.querySelector('.tema');
-function etqTema(){var o=h.dataset.theme==='dark',t=h.dataset.idioma==='en'?'Dark mode':'Modo oscuro';bt.setAttribute('aria-checked',o?'true':'false');bt.setAttribute('aria-label',t);bt.title=t}
-bt.addEventListener('click',function(){h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('tema',h.dataset.theme)}catch(e){}etqTema()});
+var bis=document.querySelectorAll('.idioma:not(.tema)'),bts=document.querySelectorAll('.tema');
+function etqTema(){var o=h.dataset.theme==='dark',t=h.dataset.idioma==='en'?'Dark mode':'Modo oscuro';bts.forEach(function(bt){bt.setAttribute('aria-checked',o?'true':'false');bt.setAttribute('aria-label',t);bt.title=t})}
+bts.forEach(function(bt){bt.addEventListener('click',function(){h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('tema',h.dataset.theme)}catch(e){}etqTema()})});
 var UI={'Ampliar imagen':'Enlarge image','Imagen ampliada':'Enlarged image','Cerrar':'Close','Anterior':'Previous','Siguiente':'Next','Abrir menú':'Open menu','Cerrar menú':'Close menu','Principal':'Main'};
 function aplicar(l){
   var en=l==='en';
@@ -860,13 +862,13 @@ function aplicar(l){
     if(e.dataset.esAlt===undefined)e.dataset.esAlt=e.getAttribute('alt')||'';
     e.setAttribute('alt',en?e.dataset.enAlt:e.dataset.esAlt);
   });
-  bi.textContent=en?'ESP':'ENG';etqTema();
+  bis.forEach(function(bi){bi.textContent=en?'ESP':'ENG'});etqTema();
   if(window.__etqIm)window.__etqIm();if(window.__etqSw)window.__etqSw();
   try{localStorage.setItem('idioma',l)}catch(e){}
 }
 var g='es';try{g=localStorage.getItem('idioma')||'es'}catch(e){}
 aplicar(g);
-bi.addEventListener('click',function(){aplicar(h.dataset.idioma==='en'?'es':'en')});
+bis.forEach(function(bi){bi.addEventListener('click',function(){aplicar(h.dataset.idioma==='en'?'es':'en')})});
 
 var ac=document.getElementById('acordeon'),pl=document.getElementById('proyectos-link');
 function abrirAc(a){pl.setAttribute('aria-expanded',a?'true':'false');ac.classList.toggle('abierto',a)}

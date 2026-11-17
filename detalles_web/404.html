@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Agustina Recayte — Artista visual</title>
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#161514">
+<script>document.documentElement.dataset.theme="dark";try{var _t=localStorage.getItem("tema");if(_t)document.documentElement.dataset.theme=_t}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Inter:wght@300..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--fondo:#ffffff;--texto:#252525;--tenue:#6b6760;--linea:#E6E3DC;color-scheme:light}
+:root[data-theme="dark"]{--fondo:#161514;--texto:#ECE8DE;--tenue:#a39e94;--linea:#33302D;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--fondo);color:var(--texto);font:300 1.0625rem/1.75 "Inter",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;display:flex;align-items:center;justify-content:center;padding:2rem}
+::selection{background:#2B2A28;color:#F1EDE3}
+:root[data-theme="dark"] ::selection{background:#D9CFBB;color:#161514}
+main{text-align:center;max-width:30rem}
+.humo{display:block;margin:0 auto 1.6rem;width:150px;height:auto;overflow:visible}
+.humo path{fill:none;stroke:var(--texto);stroke-width:1.1;stroke-linecap:round;opacity:.65;stroke-dasharray:1;stroke-dashoffset:1;animation:traza 3.2s ease-out forwards}
+.humo path:nth-child(2){animation-delay:.5s;opacity:.45}
+.humo path:nth-child(3){animation-delay:1s;opacity:.3}
+@keyframes traza{to{stroke-dashoffset:0}}
+.cod{font:400 .78rem "JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;color:var(--tenue);letter-spacing:.08em;margin:0 0 .6rem}
+h1{font:400 clamp(1.5rem,4.2vw,2.1rem)/1.2 "Hammersmith One","Arial Rounded MT Bold",Arial,sans-serif;margin:0 0 1.4rem}
+a{color:inherit;font:400 .78rem "JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;letter-spacing:.06em;text-decoration:none;border-bottom:1px solid var(--linea);padding-bottom:.15rem}
+a:hover{border-bottom-color:var(--texto)}
+@media (prefers-reduced-motion:reduce){.humo path{animation:none;stroke-dashoffset:0}}
+</style>
+</head>
+<body>
+<main>
+<svg class="humo" viewBox="0 0 150 130" aria-hidden="true">
+<path pathLength="1" d="M52 126 C34 104 74 92 56 70 S40 34 62 6"/>
+<path pathLength="1" d="M78 126 C62 108 98 94 82 74 S70 40 90 14"/>
+<path pathLength="1" d="M104 126 C90 110 118 98 106 80 S96 52 112 30"/>
+</svg>
+<p class="cod">404</p>
+<h1 id="t">Esta página se disipó.</h1>
+<a id="v" href="/">Volver al inicio</a>
+</main>
+<script>
+try{if(localStorage.getItem("idioma")==="en"){document.documentElement.lang="en";document.getElementById("t").textContent="This page has dissipated.";document.getElementById("v").textContent="Back to home"}}catch(e){}
+</script>
+</body>
+</html>

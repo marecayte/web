@@ -361,6 +361,45 @@ html:has(.lateral.abierto){overflow:hidden}
 .vol .vol-sig{margin-left:auto;text-align:right}
 }
 @media (prefers-reduced-motion:reduce){.lateral.abierto .panel{animation:none}}
+
+/* ===== DETALLES PROPIOS (selección, barra, cursor, humo) =====
+   Cada bloque se puede borrar por separado sin romper nada. */
+/* Selección de texto: carbón en modo claro, papel en modo oscuro */
+::selection{background:#2B2A28;color:#F1EDE3}
+::-moz-selection{background:#2B2A28;color:#F1EDE3}
+:root[data-theme="dark"] ::selection{background:#D9CFBB;color:#161514}
+:root[data-theme="dark"] ::-moz-selection{background:#D9CFBB;color:#161514}
+/* Barra de scroll fina, color carbón */
+html{scrollbar-width:thin;scrollbar-color:#4a4743 transparent}
+:root[data-theme="dark"]{scrollbar-color:#6b665e transparent}
+@supports not (scrollbar-color:auto){
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#4a4743;border-radius:8px}
+:root[data-theme="dark"] ::-webkit-scrollbar-thumb{background:#6b665e}
+}
+/* Cursor (prueba piloto): punto, anillo en lo clickeable, anillo con + / − en las imágenes. Solo con mouse */
+@media (hover:hover) and (pointer:fine){
+html{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='4.2' fill='%23252525' stroke='%23ffffff' stroke-opacity='.85' stroke-width='1.6'/%3E%3C/svg%3E") 12 12,auto}
+:is(a,button,label,[role=button],[role=switch],.video-poster,.carrusel-bt,.sw-nj,.ts-sw,.idioma,.menu-btn){cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23ffffff' stroke-opacity='.85' stroke-width='3.4'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23252525' stroke-width='1.4'/%3E%3C/svg%3E") 16 16,pointer!important}
+.obras .im[role=button]{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23ffffff' stroke-opacity='.85' stroke-width='3.4'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23252525' stroke-width='1.4'/%3E%3Cpath d='M12.5 16h7M16 12.5v7' stroke='%23ffffff' stroke-opacity='.85' stroke-width='3.2' stroke-linecap='round'/%3E%3Cpath d='M12.5 16h7M16 12.5v7' stroke='%23252525' stroke-width='1.3' stroke-linecap='round'/%3E%3C/svg%3E") 16 16,zoom-in!important}
+.lb-img{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23ffffff' stroke-opacity='.85' stroke-width='3.4'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23252525' stroke-width='1.4'/%3E%3Cpath d='M12.5 16h7' stroke='%23ffffff' stroke-opacity='.85' stroke-width='3.2' stroke-linecap='round'/%3E%3Cpath d='M12.5 16h7' stroke='%23252525' stroke-width='1.3' stroke-linecap='round'/%3E%3C/svg%3E") 16 16,zoom-out}
+html[data-theme="dark"]{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='4.2' fill='%23ECE8DE' stroke='%23161514' stroke-opacity='.85' stroke-width='1.6'/%3E%3C/svg%3E") 12 12,auto}
+html[data-theme="dark"] :is(a,button,label,[role=button],[role=switch],.video-poster,.carrusel-bt,.sw-nj,.ts-sw,.idioma,.menu-btn){cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23161514' stroke-opacity='.85' stroke-width='3.4'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23ECE8DE' stroke-width='1.4'/%3E%3C/svg%3E") 16 16,pointer!important}
+html[data-theme="dark"] .obras .im[role=button]{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23161514' stroke-opacity='.85' stroke-width='3.4'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23ECE8DE' stroke-width='1.4'/%3E%3Cpath d='M12.5 16h7M16 12.5v7' stroke='%23161514' stroke-opacity='.85' stroke-width='3.2' stroke-linecap='round'/%3E%3Cpath d='M12.5 16h7M16 12.5v7' stroke='%23ECE8DE' stroke-width='1.3' stroke-linecap='round'/%3E%3C/svg%3E") 16 16,zoom-in!important}
+html[data-theme="dark"] .lb-img{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23161514' stroke-opacity='.85' stroke-width='3.4'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23ECE8DE' stroke-width='1.4'/%3E%3Cpath d='M12.5 16h7' stroke='%23161514' stroke-opacity='.85' stroke-width='3.2' stroke-linecap='round'/%3E%3Cpath d='M12.5 16h7' stroke='%23ECE8DE' stroke-width='1.3' stroke-linecap='round'/%3E%3C/svg%3E") 16 16,zoom-out}
+}
+/* Humo: aparece al escribir "humo" (o "smoke") con el teclado */
+.humo-ez{position:fixed;inset:0;z-index:40;pointer-events:none;overflow:hidden;--hc:37,37,37}
+html[data-theme="dark"] .humo-ez{--hc:236,232,222}
+.humo-ez i{position:absolute;width:70vmax;height:46vmax;border-radius:50%;background:radial-gradient(closest-side,rgba(var(--hc),.5),rgba(var(--hc),0));filter:blur(28px);opacity:0;animation:humo-pasa 6s ease-in-out forwards}
+.humo-ez i:nth-child(1){left:-20vmax;bottom:-18vmax}
+.humo-ez i:nth-child(2){left:15vw;bottom:-25vmax;animation-delay:.6s}
+.humo-ez i:nth-child(3){right:-18vmax;bottom:-10vmax;animation-delay:1.2s}
+.humo-ez i:nth-child(4){left:35vw;top:-10vmax;animation-delay:1.8s}
+.humo-ez i:nth-child(5){right:10vw;top:20vh;animation-delay:2.4s}
+@keyframes humo-pasa{0%{opacity:0;transform:translate3d(-12%,10%,0) scale(.8)}30%{opacity:.55}100%{opacity:0;transform:translate3d(18%,-22%,0) scale(1.25)}}
+@media (prefers-reduced-motion:reduce){.humo-ez{display:none}}
 </style>
 <noscript><style>
 .vista{display:none}
@@ -1037,6 +1076,33 @@ function etq(){var c=f.classList.contains('color'),en=document.documentElement.l
 window.__etqSw=etq;etq();
 b.addEventListener('click',function(){var c=f.classList.toggle('color');b.setAttribute('aria-checked',c?'true':'false');etq()})})();
 
+</script>
+<script>
+/* Detalles propios: título de la pestaña cuando no se mira, humo escondido, mensaje en la consola */
+(function(){
+var h=document.documentElement,real=null;
+var T={es:['Se disipa el humo…','Volvé, se está borrando…','Hora trémula…','El carbón espera…'],
+en:['The smoke is clearing…','Come back, it’s smudging…','Hora trémula…','The charcoal is waiting…']};
+document.addEventListener('visibilitychange',function(){
+  if(document.hidden){real=document.title;var l=T[h.lang==='en'?'en':'es'];document.title=l[Math.floor(Math.random()*l.length)]}
+  else if(real!==null){document.title=real;real=null}
+});
+var buf='';
+document.addEventListener('keydown',function(ev){
+  if(ev.ctrlKey||ev.metaKey||ev.altKey||!ev.key||ev.key.length!==1)return;
+  var t=ev.target;if(t&&(t.isContentEditable||/^(input|textarea|select)$/i.test(t.tagName)))return;
+  buf=(buf+ev.key.toLowerCase()).slice(-5);
+  if(/humo$|smoke$/.test(buf)){buf='';humo()}
+});
+function humo(){
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  if(document.querySelector('.humo-ez'))return;
+  var d=document.createElement('div');d.className='humo-ez';d.setAttribute('aria-hidden','true');
+  d.innerHTML='<i></i><i></i><i></i><i></i><i></i>';document.body.appendChild(d);
+  setTimeout(function(){d.remove()},9500);
+}
+try{console.log('%cAgustina Recayte','font:600 15px Georgia,serif','\nSi estás mirando el código: hola. Esta web está hecha a mano, como los dibujos.\nHay algo escondido en la página: probá escribir una palabra de la portada.')}catch(e){}
+})();
 </script>
 </body>
 </html>

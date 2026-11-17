@@ -16,6 +16,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta name="robots" content="noimageindex">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#161514">
 <script>document.documentElement.dataset.theme="dark";try{var _t=localStorage.getItem("tema");if(_t)document.documentElement.dataset.theme=_t}catch(e){}</script>
@@ -387,6 +388,9 @@ html[data-theme="dark"]{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.
 html[data-theme="dark"] .obras .im[role=button]{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23161514' stroke-opacity='.85' stroke-width='3.4'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23ECE8DE' stroke-width='1.4'/%3E%3Cpath d='M12.5 16h7M16 12.5v7' stroke='%23161514' stroke-opacity='.85' stroke-width='3.2' stroke-linecap='round'/%3E%3Cpath d='M12.5 16h7M16 12.5v7' stroke='%23ECE8DE' stroke-width='1.3' stroke-linecap='round'/%3E%3C/svg%3E") 16 16,zoom-in!important}
 html[data-theme="dark"] .lb-img{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23161514' stroke-opacity='.85' stroke-width='3.4'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23ECE8DE' stroke-width='1.4'/%3E%3Cpath d='M12.5 16h7' stroke='%23161514' stroke-opacity='.85' stroke-width='3.2' stroke-linecap='round'/%3E%3Cpath d='M12.5 16h7' stroke='%23ECE8DE' stroke-width='1.3' stroke-linecap='round'/%3E%3C/svg%3E") 16 16,zoom-out}
 }
+/* Protección básica de imágenes: sin arrastrar, sin menú de guardar (mouse y celular), sin selección */
+img,.im,.lb-img,.lbn-img,.ts-img>div,.portada,.video-poster{-webkit-user-drag:none;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+img{pointer-events:auto}
 /* Humo: aparece al escribir "humo" (o "smoke") con el teclado */
 .humo-ez{position:fixed;inset:0;z-index:40;pointer-events:none;overflow:hidden;--hc:37,37,37}
 html[data-theme="dark"] .humo-ez{--hc:236,232,222}
@@ -1099,6 +1103,10 @@ function humo(){
   d.innerHTML='<i></i><i></i><i></i><i></i><i></i>';document.body.appendChild(d);
   setTimeout(function(){d.remove()},9500);
 }
+/* Protección básica de imágenes: bloquea clic derecho y arrastre sobre las fotos */
+var IMG='img,.im,.lb-img,.lbn-img,.ts-img,.portada,.video-poster,figure';
+document.addEventListener('contextmenu',function(ev){var t=ev.target;if(t&&t.closest&&t.closest(IMG))ev.preventDefault()});
+document.addEventListener('dragstart',function(ev){var t=ev.target;if(t&&t.closest&&t.closest(IMG))ev.preventDefault()});
 try{console.log('%cAgustina Recayte','font:600 15px Georgia,serif','\nSi estás mirando el código: hola. Esta web está hecha a mano, como los dibujos.\nHay algo escondido en la página: probá escribir una palabra de la portada.')}catch(e){}
 })();
 </script>

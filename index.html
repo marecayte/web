@@ -413,6 +413,10 @@ html[data-theme="dark"] .humo-ez{--hc:236,232,222}
 .humo-ez i:nth-child(5){right:10vw;top:20vh;animation-delay:2.4s}
 @keyframes humo-pasa{0%{opacity:0;transform:translate3d(-12%,10%,0) scale(.8)}30%{opacity:.55}100%{opacity:0;transform:translate3d(18%,-22%,0) scale(1.25)}}
 @media (prefers-reduced-motion:reduce){.humo-ez{display:none}}
+
+.lista li.par>span{display:block;padding:.5rem 0 .1rem;font:350 .88rem/1.45 var(--f-cuerpo);color:var(--texto)}
+.lista li.par ul{padding-left:.9rem}
+.lista li.par:has(a[aria-current="page"])>span{font-weight:550}
 </style>
 <noscript><style>
 .vista{display:none}
@@ -483,8 +487,10 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <p class="grupo" data-en="Drawing">Dibujo</p>
 <ul>
 <li><a href="#la-forma-del-despojo">La forma del despojo</a></li>
-<li><a href="#la-insistencia-de-la-sombra">La insistencia de la sombra</a></li>
+<li class="par"><span>La insistencia de la sombra</span><ul>
 <li><a href="#algunos-rasgunos-disipan-la-llama">Algunos rasguños disipan la llama</a></li>
+<li><a href="#la-insistencia-de-la-sombra">La insistencia de la sombra</a></li>
+</ul></li>
 <li><a href="#rastros">Rastros</a></li>
 <li><a href="#equilibristas">Equilibristas</a></li>
 <li><a href="#bosque">Bosque</a></li>
@@ -516,8 +522,8 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <div class="cont obra">
 <div class="flujo indice">
 <figure class="ia" style="--w:47.6;--wm:88;--ar:1.5"><a href="#la-forma-del-despojo" tabindex="-1" aria-hidden="true"><img class="im" src="img/despojo/la-forma-del-despojo-montaje-1200.webp" srcset="img/despojo/la-forma-del-despojo-montaje-1200.webp 1200w, img/despojo/la-forma-del-despojo-montaje-1500.webp 1500w" sizes="(min-width:901px) 71vw, 92vw" width="1200" height="525" loading="lazy" decoding="async" alt="" role="img" aria-label="Seis dibujos cuadrados en carbón, enmarcados en negro y dispuestos en dos filas de tres sobre una pared blanca" data-en-label="Six square charcoal drawings framed in black, arranged in two rows of three on a white wall"></a><figcaption><a href="#la-forma-del-despojo">La forma del despojo</a><br><span class="med" data-en="Drawing">Dibujo</span></figcaption></figure>
-<figure class="ia" style="--w:47.6;--wm:88;--ar:1.5"><a href="#la-insistencia-de-la-sombra" tabindex="-1" aria-hidden="true"><img class="im" src="img/insistencia/memoria-de-un-arrebato-montaje-full.webp" srcset="img/insistencia/memoria-de-un-arrebato-montaje-800.webp 600w, img/insistencia/memoria-de-un-arrebato-montaje-full.webp 896w" sizes="(min-width:901px) 46vw, 92vw" width="600" height="800" loading="lazy" decoding="async" alt="" role="img" aria-label="Tríptico enmarcado en negro sobre un estante blanco: a la izquierda fragmentos de carbón, al centro un dibujo de humo y a la derecha una superficie de mármol claro" data-en-label="Triptych framed in black on a white shelf: charcoal fragments on the left, a smoke drawing in the center and a light marble surface on the right" style="object-position:50% 58%"></a><figcaption><a href="#la-insistencia-de-la-sombra">La insistencia de la sombra</a><br><span class="med" data-en="Drawing">Dibujo</span></figcaption></figure>
 <figure class="ia" style="--w:35.4;--wm:63.3;--ar:0.7498"><a href="#algunos-rasgunos-disipan-la-llama" tabindex="-1" aria-hidden="true"><img class="im" src="img/algunos/frente-y-dorso-2023-1-1500.webp" srcset="img/algunos/frente-y-dorso-2023-1-800.webp 533w, img/algunos/frente-y-dorso-2023-1-1200.webp 800w, img/algunos/frente-y-dorso-2023-1-1500.webp 1000w" sizes="(min-width:901px) 23vw, 92vw" width="533" height="800" loading="lazy" decoding="async" alt="" role="img" aria-label="Dibujo en carbón de gran formato colgado con barras blancas y cables en una sala, con una llama blanca que sube desde la base sobre un fondo oscuro" data-en-label="Large-format charcoal drawing hung with white bars and cables in a gallery, with a white flame rising from the base on a dark background"></a><figcaption><a href="#algunos-rasgunos-disipan-la-llama">Algunos rasguños disipan la llama</a><br><span class="med" data-en="Drawing">Dibujo</span></figcaption></figure>
+<figure class="ia" style="--w:47.6;--wm:88;--ar:1.5"><a href="#la-insistencia-de-la-sombra" tabindex="-1" aria-hidden="true"><img class="im" src="img/insistencia/memoria-de-un-arrebato-montaje-full.webp" srcset="img/insistencia/memoria-de-un-arrebato-montaje-800.webp 600w, img/insistencia/memoria-de-un-arrebato-montaje-full.webp 896w" sizes="(min-width:901px) 46vw, 92vw" width="600" height="800" loading="lazy" decoding="async" alt="" role="img" aria-label="Tríptico enmarcado en negro sobre un estante blanco: a la izquierda fragmentos de carbón, al centro un dibujo de humo y a la derecha una superficie de mármol claro" data-en-label="Triptych framed in black on a white shelf: charcoal fragments on the left, a smoke drawing in the center and a light marble surface on the right" style="object-position:50% 58%"></a><figcaption><a href="#la-insistencia-de-la-sombra">La insistencia de la sombra</a><br><span class="med" data-en="Drawing">Dibujo</span></figcaption></figure>
 <figure class="ib" style="--w:45.1;--wm:84.2;--ar:1.3267"><a href="#rastros" tabindex="-1" aria-hidden="true"><img class="im" src="img/rastros/humo-2021-1200.webp" srcset="img/rastros/humo-2021-800.webp 800w, img/rastros/humo-2021-1200.webp 1200w, img/rastros/humo-2021-1500.webp 1500w" sizes="(min-width:901px) 44vw, 92vw" width="800" height="603" loading="lazy" decoding="async" alt="" data-full="img/rastros/humo-2021-full.webp" role="img" aria-label="Dibujo en carbón abstracto de texturas claras y oscuras entrelazadas" data-en-label="Abstract charcoal drawing of intertwined light and dark textures"></a><figcaption><a href="#rastros">Rastros</a><br><span class="med" data-en="Drawing">Dibujo</span></figcaption></figure>
 <figure class="ia" style="--w:35.7;--wm:64.1;--ar:0.7688"><a href="#equilibristas" tabindex="-1" aria-hidden="true"><img class="im" src="img/equilibristas/equilibristas-1-1500.webp" srcset="img/equilibristas/equilibristas-1-800.webp 800w, img/equilibristas/equilibristas-1-1200.webp 923w, img/equilibristas/equilibristas-1-1500.webp 1500w" sizes="(min-width:901px) 26vw, 92vw" width="800" height="1040" loading="lazy" decoding="async" alt="" data-full="img/equilibristas/equilibristas-1-full.webp" role="img" aria-label="Dibujo en carbón de una figura de vestido largo sobre una línea tensada, con una pierna extendida hacia adelante" data-en-label="Charcoal drawing of a figure in a long dress on a taut line, one leg extended forward"></a><figcaption><a href="#equilibristas">Equilibristas</a><br><span class="med" data-en="Drawing">Dibujo</span></figcaption></figure>
 <figure class="ib" style="--w:35.0;--wm:62.5;--ar:0.7312"><a href="#bosque" tabindex="-1" aria-hidden="true"><img class="im" src="img/bosque/bosque-nuboso-2020-1500.webp" srcset="img/bosque/bosque-nuboso-2020-800.webp 800w, img/bosque/bosque-nuboso-2020-1200.webp 878w, img/bosque/bosque-nuboso-2020-1500.webp 1181w" sizes="(min-width:901px) 24vw, 92vw" width="800" height="1094" loading="lazy" decoding="async" alt="" data-full="img/bosque/bosque-nuboso-2020-full.webp" role="img" aria-label="Dibujo en carbón de un bosque de coníferas sobre una ladera, con niebla entre los árboles" data-en-label="Charcoal drawing of a conifer forest on a hillside, with mist between the trees"></a><figcaption><a href="#bosque">Bosque</a><br><span class="med" data-en="Drawing">Dibujo</span></figcaption></figure>
@@ -567,7 +573,7 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 </div>
 <p class="ficha" data-en="La forma del despojo, 2026. Polyptych, charcoal on paper, 100 x 150 cm.">La forma del despojo, 2026. Políptico, carbón sobre papel, 100 x 150 cm.</p>
 </div>
-<nav class="vol" aria-label="Entre proyectos" data-en-label="Between projects"><a class="vol-menu" href="#panel" data-en="← Projects">← Proyectos</a><a class="vol-sig" href="#la-insistencia-de-la-sombra" data-en="Next project →">Siguiente proyecto →</a></nav>
+<nav class="vol" aria-label="Entre proyectos" data-en-label="Between projects"><a class="vol-menu" href="#panel" data-en="← Projects">← Proyectos</a><a class="vol-sig" href="#algunos-rasgunos-disipan-la-llama" data-en="Next project →">Siguiente proyecto →</a></nav>
 </article>
 </div>
 </section>
@@ -595,8 +601,7 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <h2 data-en="Projects">Proyectos</h2>
 <div class="cont obra">
 <article class="pieza">
-<h3>La insistencia de la sombra</h3>
-<p class="dato" data-en="Drawing">Dibujo</p>
+<h3 style="margin-bottom:1.6rem">La insistencia de la sombra</h3>
 <div class="flujo obras">
 <div class="rf agrupa">
 <figure style="--ar:0.7498"><img class="im" src="img/insistencia/memoria-de-un-arrebato-montaje-full.webp" srcset="img/insistencia/memoria-de-un-arrebato-montaje-800.webp 600w, img/insistencia/memoria-de-un-arrebato-montaje-full.webp 896w" sizes="(min-width:901px) 35vw, 45vw" width="600" height="800" loading="lazy" decoding="async" alt="" data-full="img/insistencia/memoria-de-un-arrebato-montaje-full.webp" role="img" aria-label="Tríptico enmarcado en negro sobre un estante blanco: a la izquierda fragmentos de carbón, al centro un dibujo de humo y a la derecha una superficie de mármol claro" data-en-label="Triptych framed in black on a white shelf: charcoal fragments on the left, a smoke drawing in the center and a light marble surface on the right"><a class="zoom" id="f-algunos10" href="#z-algunos10" aria-label="Ampliar imagen"></a><figcaption data-en="Memoria de un arrebato, 2026. Installation view.">Memoria de un arrebato, 2026. Vista de montaje.</figcaption></figure>
@@ -613,7 +618,7 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <figure style="--ar:0.6677"><img class="im" src="img/insistencia/estetica-del-silencio-2024-montaje-full.webp" srcset="img/insistencia/estetica-del-silencio-2024-montaje-800.webp 534w, img/insistencia/estetica-del-silencio-2024-montaje-full.webp 844w" sizes="(min-width:901px) 31vw, 92vw" width="534" height="800" loading="lazy" decoding="async" alt="" data-full="img/insistencia/estetica-del-silencio-2024-montaje-full.webp" role="img" aria-label="Vista de sala: dibujo en carbón de humo y nubes colgado de una barra negra, con un montículo de carbón en el suelo" data-en-label="Installation view: charcoal drawing of smoke and clouds hanging from a black bar, with a mound of charcoal on the floor"><a class="zoom" id="f-algunos2" href="#z-algunos2" aria-label="Ampliar imagen"></a><figcaption data-en="Estética del silencio, 2024. Charcoal on paper, 150 x 100 cm.">Estética del silencio, 2024. Carbón sobre papel, 150 x 100 cm.</figcaption></figure>
 </div>
 </div>
-<nav class="vol" aria-label="Entre proyectos" data-en-label="Between projects"><a class="vol-menu" href="#panel" data-en="← Projects">← Proyectos</a><a class="vol-sig" href="#algunos-rasgunos-disipan-la-llama" data-en="Next project →">Siguiente proyecto →</a></nav>
+<nav class="vol" aria-label="Entre proyectos" data-en-label="Between projects"><a class="vol-menu" href="#panel" data-en="← Projects">← Proyectos</a><a class="vol-sig" href="#rastros" data-en="Next project →">Siguiente proyecto →</a></nav>
 </article>
 </div>
 </section>
@@ -629,8 +634,7 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <h2 data-en="Projects">Proyectos</h2>
 <div class="cont obra">
 <article class="pieza">
-<h3>Algunos rasguños disipan la llama</h3>
-<p class="dato" data-en="Drawing">Dibujo</p>
+<h3 style="margin-bottom:1.6rem">Algunos rasguños disipan la llama</h3>
 <div class="flujo obras">
 <div class="rf agrupa">
 <figure style="--ar:1.058"><img class="im" src="img/algunos/hora-tremula-diptico-2024-1200.webp" srcset="img/algunos/hora-tremula-diptico-2024-800.webp 800w, img/algunos/hora-tremula-diptico-2024-1200.webp 1200w, img/algunos/hora-tremula-diptico-2024-1500.webp 1500w" sizes="(min-width:901px) 29vw, 92vw" width="800" height="756" loading="lazy" decoding="async" alt="" data-full="img/algunos/hora-tremula-diptico-2024-full.webp" role="img" aria-label="Díptico enmarcado en negro con dos dibujos de líneas blancas sobre fondo oscuro, colgado sobre una pared clara de textura arenosa" data-en-label="Diptych framed in black with two drawings of white lines on a dark background, hanging on a light wall with a sandy texture"><a class="zoom" id="f-algunos3" href="#z-algunos3" aria-label="Ampliar imagen"></a><figcaption data-en="Hora trémula, diptych, 2024. Charcoal on paper, 56 x 38 cm. Selected, Premio Argentino a las Artes Visuales Fundación OSDE, 6th edition.">Hora trémula, díptico, 2024. Carbón sobre papel, 56 x 38 cm. Seleccionada Premio Argentino a las Artes Visuales Fundación OSDE, 6.ª edición.</figcaption></figure>
@@ -652,7 +656,7 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <figure style="--ar:2.0703"><img class="im" src="img/algunos/fuego-2021-triptico-1200.webp" srcset="img/algunos/fuego-2021-triptico-800.webp 800w, img/algunos/fuego-2021-triptico-1200.webp 1200w, img/algunos/fuego-2021-triptico-1500.webp 1500w" sizes="(min-width:901px) 71vw, 92vw" width="800" height="386" loading="lazy" decoding="async" alt="" data-full="img/algunos/fuego-2021-triptico-full.webp" role="img" aria-label="Tríptico de tres dibujos en carbón con formas de humo claro sobre fondo negro, colgados uno al lado del otro" data-en-label="Triptych of three charcoal drawings with light smoke shapes on a black background, hung side by side"><a class="zoom" id="f-algunos15" href="#z-algunos15" aria-label="Ampliar imagen"></a><figcaption data-en="Fuego, 2021. Triptych. Charcoal on paper, 46 x 95 cm.">Fuego, 2021. Tríptico. Carbón sobre papel, 46 x 95 cm.</figcaption></figure>
 </div>
 </div>
-<nav class="vol" aria-label="Entre proyectos" data-en-label="Between projects"><a class="vol-menu" href="#panel" data-en="← Projects">← Proyectos</a><a class="vol-sig" href="#rastros" data-en="Next project →">Siguiente proyecto →</a></nav>
+<nav class="vol" aria-label="Entre proyectos" data-en-label="Between projects"><a class="vol-menu" href="#panel" data-en="← Projects">← Proyectos</a><a class="vol-sig" href="#la-insistencia-de-la-sombra" data-en="Next project →">Siguiente proyecto →</a></nav>
 </article>
 </div>
 </section>

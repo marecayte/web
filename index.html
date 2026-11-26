@@ -265,7 +265,7 @@ a,button{-webkit-tap-highlight-color:transparent}
 body::before{mix-blend-mode:normal;opacity:.035}
 :root[data-theme="dark"] body::before{mix-blend-mode:normal;opacity:.05}
 .principal{padding:.7rem 0}
-.lista li a{padding:.72rem 0}
+.lista li a,.par-t{padding:.72rem 0}
 .grupo{margin-top:.8rem}
 .idioma{padding:.45rem 1rem}
 .menu-btn{padding:.75rem 0 .75rem 1rem}
@@ -406,6 +406,16 @@ html[data-theme="dark"] .humo-ez{--hc:236,232,222}
 @keyframes humo-pasa{0%{opacity:0;transform:translate3d(-12%,10%,0) scale(.8)}30%{opacity:.55}100%{opacity:0;transform:translate3d(18%,-22%,0) scale(1.25)}}
 @media (prefers-reduced-motion:reduce){.humo-ez{display:none}}
 
+.par-fila{display:flex;align-items:center;gap:.1rem}
+.par-t{background:none;border:0;cursor:pointer;text-align:left;padding:.12rem 0 .3rem;font:350 .88rem/1.45 var(--f-cuerpo);color:var(--texto);-webkit-tap-highlight-color:transparent}
+.par-t:hover{font-weight:550}
+.par-b{margin-left:.6rem;font-family:var(--f-dato);color:var(--sec)}
+.par-b:hover{color:var(--texto)}
+.par-sub{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s cubic-bezier(.4,0,.2,1)}
+.par-in{overflow:hidden;min-height:0;visibility:hidden;transition:visibility 0s linear .4s}
+.par.abierto>.par-sub{grid-template-rows:1fr}
+.par.abierto>.par-sub>.par-in{visibility:visible;transition-delay:0s}
+.lista li.par>.par-sub ul,.lista .par-in{padding-left:.9rem}
 .lista li.par>span{display:block;padding:.5rem 0 .1rem;font:350 .88rem/1.45 var(--f-cuerpo);color:var(--texto)}
 .lista li.par ul{padding-left:.9rem}
 .lista li.par:has(a[aria-current="page"])>span{font-weight:550}
@@ -418,6 +428,7 @@ html[data-theme="dark"] .humo-ez{--hc:236,232,222}
 main:has(.vista:target) #inicio{display:none}
 main:has(.vista :target) #inicio{display:none}
 .lista{grid-template-rows:1fr}.lista-in{visibility:visible}
+.par-sub{grid-template-rows:1fr}.par-in{visibility:visible}.par-b{display:none}
 .principal[aria-expanded]::after{display:none}
 .idioma,.tema,.menu-btn{display:none}
 .sw-nj{display:block;position:relative;flex:0 0 auto;width:2.5rem;height:1.55rem;border:1px solid var(--linea);border-radius:99px;cursor:pointer}
@@ -476,11 +487,16 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <div class="lista" id="lista-proy"><div class="lista-in">
 <p class="grupo" data-en="Drawing">Dibujo</p>
 <ul>
+<li class="par" id="par-insistencia">
+<div class="par-fila"><button type="button" class="par-t" aria-expanded="false" aria-controls="par-sub">La insistencia de la sombra<span class="par-b" aria-hidden="true">+</span></button></div>
+<div class="par-sub" id="par-sub"><ul class="par-in">
 <li><a href="#la-forma-del-despojo">La forma del despojo</a></li>
 <li><a href="#la-insistencia-de-la-sombra">La insistencia de la sombra</a></li>
 <li><a href="#algunos-rasgunos-disipan-la-llama">Algunos rasguños disipan la llama</a></li>
 <li><a href="#rastros">Rastros</a></li>
 <li><a href="#bosque">Bosque</a></li>
+</ul></div>
+</li>
 </ul>
 <p class="grupo">Video</p>
 <ul><li><a href="#un-lugar">Un lugar al que no voy a volver</a></li></ul>
@@ -962,6 +978,9 @@ bis.forEach(function(bi){bi.addEventListener('click',function(){aplicar(h.datase
 var ac=document.getElementById('acordeon'),pl=document.getElementById('proyectos-link');
 function abrirAc(a){pl.setAttribute('aria-expanded',a?'true':'false');ac.classList.toggle('abierto',a)}
 pl.addEventListener('click',function(){abrirAc(pl.getAttribute('aria-expanded')!=='true')});
+var pp=document.getElementById('par-insistencia'),pb=pp.querySelector('.par-t'),pm=pp.querySelector('.par-b');
+function abrirPar(a){pp.classList.toggle('abierto',a);pb.setAttribute('aria-expanded',a?'true':'false');pm.textContent=a?'\u2013':'+'}
+pb.addEventListener('click',function(){abrirPar(!pp.classList.contains('abierto'))});
 var lat=document.getElementById('lateral'),mb=lat.querySelector('.menu-btn');
 mb.addEventListener('click',function(){
   var a=lat.classList.toggle('abierto');
@@ -981,6 +1000,7 @@ function ruta(){
   document.title=(id==='inicio'||!t)?'Agustina Recayte — Artista visual':t.textContent+' — Agustina Recayte';
   lat.classList.remove('abierto');mb.setAttribute('aria-expanded','false');
   if(ac.querySelector('a[href="#'+id+'"]'))abrirAc(true);
+  if(pp.querySelector('a[href="#'+id+'"]'))abrirPar(true);
   window.scrollTo(0,0);
 }
 window.addEventListener('hashchange',ruta);ruta();

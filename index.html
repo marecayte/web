@@ -115,7 +115,7 @@ nav a{text-decoration:none}
 .principal[aria-expanded]::after{content:"+";font-family:var(--f-dato);margin-left:.6rem;color:var(--sec)}
 .principal[aria-expanded="true"]::after{content:"\2013"}
 button.principal{background:none;border:0;cursor:pointer;text-align:left}
-.principal:hover,.principal[aria-current="page"]{font-weight:500}
+.principal:hover,.principal[aria-current="page"]{-webkit-text-stroke:.3px currentColor}
 .lista{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s cubic-bezier(.4,0,.2,1)}
 .lista-in{overflow:hidden;min-height:0;visibility:hidden;transition:visibility 0s linear .4s}
 .acordeon.abierto .lista{grid-template-rows:1fr}
@@ -124,17 +124,17 @@ button.principal{background:none;border:0;cursor:pointer;text-align:left}
 .lista ul{list-style:none;padding:0 0 0 .9rem;margin:0}
 .lista-in>ul:last-child{margin-bottom:.85rem}
 .lista li a{display:block;width:fit-content;padding:.12rem 0 .3rem;font:350 .88rem/1.45 var(--f-cuerpo);color:var(--texto);transition:color .25s}
-.lista li a:hover,.lista li a[aria-current="page"]{font-weight:550}
+.lista li a:hover,.lista li a[aria-current="page"]{-webkit-text-stroke:.4px currentColor}
 .aparte{margin-top:1.1rem;padding-top:1.1rem;border-top:1px solid var(--linea)}
 .idioma{font:400 .78rem var(--f-dato);background:none;border:1px solid var(--linea);color:inherit;padding:.2rem .8rem;border-radius:99px;cursor:pointer;width:fit-content}
 .opciones{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.4rem}
 .idioma:hover{border-color:var(--texto)}
 .tema{position:relative;width:2.5rem;padding:0;align-self:stretch}
-:root{--sol:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Cpath d='M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8'/%3E%3C/svg%3E");--luna:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 14.2A8.5 8.5 0 1 1 9.8 4a6.8 6.8 0 0 0 10.2 10.2z'/%3E%3C/svg%3E")}
+:root{--sol:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2'%3E%3Ccircle cx='12' cy='12' r='8.5'/%3E%3C/svg%3E");--luna:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='9.7' fill='%23000'/%3E%3C/svg%3E")}
 .tema::before,.tema::after,.sw-nj::before,.sw-nj::after{content:"";position:absolute;top:50%;left:.32rem;width:.8rem;height:.8rem;margin-top:-.4rem;background:var(--texto);-webkit-mask:var(--ico) center/contain no-repeat;mask:var(--ico) center/contain no-repeat;transition:transform .3s,opacity .25s}
 .tema::after,.sw-nj::after{--ico:var(--sol)}
-.tema::before,.sw-nj::before{--ico:var(--luna);opacity:0;transform:rotate(-40deg)}
-.tema[aria-checked="true"]::after{opacity:0;transform:translateX(1.04rem) rotate(90deg)}
+.tema::before,.sw-nj::before{--ico:var(--luna);opacity:0;transform:scale(.6)}
+.tema[aria-checked="true"]::after{opacity:0;transform:translateX(1.04rem) scale(.6)}
 .tema[aria-checked="true"]::before{opacity:1;transform:translateX(1.04rem)}
 main{margin-left:var(--ancho-lat);min-height:100svh;position:relative;z-index:1}
 .vista{display:none}.vista.activa{display:block}
@@ -410,7 +410,7 @@ html[data-theme="dark"] .humo-ez{--hc:236,232,222}
 
 .par-fila{display:flex;align-items:center;gap:.1rem}
 .par-t{background:none;border:0;cursor:pointer;text-align:left;padding:.12rem 0 .3rem;font:350 .88rem/1.45 var(--f-cuerpo);color:var(--texto);-webkit-tap-highlight-color:transparent}
-.par-t:hover{font-weight:550}
+.par-t:hover{-webkit-text-stroke:.4px currentColor}
 .par-b{margin-left:.6rem;font-family:var(--f-dato);color:var(--sec)}
 .par-b:hover{color:var(--texto)}
 .par-sub{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s cubic-bezier(.4,0,.2,1)}
@@ -434,7 +434,7 @@ main:has(.vista :target) #inicio{display:none}
 .principal[aria-expanded]::after{display:none}
 .idioma,.tema,.menu-btn{display:none}
 .sw-nj{display:block;position:relative;flex:0 0 auto;width:2.5rem;height:1.55rem;border:1px solid var(--linea);border-radius:99px;cursor:pointer}
-:root:has(#tema-nj:checked) .sw-nj::after{opacity:0;transform:translateX(1.04rem) rotate(90deg)}
+:root:has(#tema-nj:checked) .sw-nj::after{opacity:0;transform:translateX(1.04rem) scale(.6)}
 :root:has(#tema-nj:checked) .sw-nj::before{opacity:1;transform:translateX(1.04rem)}
 .sw-m{display:none}
 :root:has(#tema-nj:checked){color-scheme:dark;--fondo:#161514;--texto:#ECE8DE;--sec:#D2BFB0;--tenue:#a39e94;--linea:#33302D;--grano:.07}
@@ -461,18 +461,18 @@ html{scroll-padding-top:5rem}
 .opciones{display:flex}
 #inicio{display:flex;align-items:stretch;min-height:calc(100svh - 4.5rem)}
 }
-body:has(#la-forma-del-despojo:target) .lateral a[href="#la-forma-del-despojo"],body:has(#la-forma-del-despojo :target) .lateral a[href="#la-forma-del-despojo"]{font-weight:600}
-body:has(#la-insistencia-de-la-sombra:target) .lateral a[href="#la-insistencia-de-la-sombra"],body:has(#la-insistencia-de-la-sombra :target) .lateral a[href="#la-insistencia-de-la-sombra"]{font-weight:600}
-body:has(#algunos-rasgunos-disipan-la-llama:target) .lateral a[href="#algunos-rasgunos-disipan-la-llama"],body:has(#algunos-rasgunos-disipan-la-llama :target) .lateral a[href="#algunos-rasgunos-disipan-la-llama"]{font-weight:600}
-body:has(#rastros:target) .lateral a[href="#rastros"],body:has(#rastros :target) .lateral a[href="#rastros"]{font-weight:600}
-body:has(#bosque:target) .lateral a[href="#bosque"],body:has(#bosque :target) .lateral a[href="#bosque"]{font-weight:600}
-body:has(#como-contar-un-espacio:target) .lateral a[href="#como-contar-un-espacio"],body:has(#como-contar-un-espacio :target) .lateral a[href="#como-contar-un-espacio"]{font-weight:600}
-body:has(#un-lugar:target) .lateral a[href="#un-lugar"],body:has(#un-lugar :target) .lateral a[href="#un-lugar"]{font-weight:600}
-body:has(#tengo-que-contarte-algo:target) .lateral a[href="#tengo-que-contarte-algo"],body:has(#tengo-que-contarte-algo :target) .lateral a[href="#tengo-que-contarte-algo"]{font-weight:600}
-body:has(#statement:target) .lateral a[href="#statement"],body:has(#statement :target) .lateral a[href="#statement"]{font-weight:600}
-body:has(#bio:target) .lateral a[href="#bio"],body:has(#bio :target) .lateral a[href="#bio"]{font-weight:600}
-body:has(#taller-secreto:target) .lateral a[href="#taller-secreto"],body:has(#taller-secreto :target) .lateral a[href="#taller-secreto"]{font-weight:600}
-body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :target) .lateral a[href="#contacto"]{font-weight:600}
+body:has(#la-forma-del-despojo:target) .lateral a[href="#la-forma-del-despojo"],body:has(#la-forma-del-despojo :target) .lateral a[href="#la-forma-del-despojo"]{-webkit-text-stroke:.4px currentColor}
+body:has(#la-insistencia-de-la-sombra:target) .lateral a[href="#la-insistencia-de-la-sombra"],body:has(#la-insistencia-de-la-sombra :target) .lateral a[href="#la-insistencia-de-la-sombra"]{-webkit-text-stroke:.4px currentColor}
+body:has(#algunos-rasgunos-disipan-la-llama:target) .lateral a[href="#algunos-rasgunos-disipan-la-llama"],body:has(#algunos-rasgunos-disipan-la-llama :target) .lateral a[href="#algunos-rasgunos-disipan-la-llama"]{-webkit-text-stroke:.4px currentColor}
+body:has(#rastros:target) .lateral a[href="#rastros"],body:has(#rastros :target) .lateral a[href="#rastros"]{-webkit-text-stroke:.4px currentColor}
+body:has(#bosque:target) .lateral a[href="#bosque"],body:has(#bosque :target) .lateral a[href="#bosque"]{-webkit-text-stroke:.4px currentColor}
+body:has(#como-contar-un-espacio:target) .lateral a[href="#como-contar-un-espacio"],body:has(#como-contar-un-espacio :target) .lateral a[href="#como-contar-un-espacio"]{-webkit-text-stroke:.4px currentColor}
+body:has(#un-lugar:target) .lateral a[href="#un-lugar"],body:has(#un-lugar :target) .lateral a[href="#un-lugar"]{-webkit-text-stroke:.4px currentColor}
+body:has(#tengo-que-contarte-algo:target) .lateral a[href="#tengo-que-contarte-algo"],body:has(#tengo-que-contarte-algo :target) .lateral a[href="#tengo-que-contarte-algo"]{-webkit-text-stroke:.4px currentColor}
+body:has(#statement:target) .lateral a[href="#statement"],body:has(#statement :target) .lateral a[href="#statement"]{-webkit-text-stroke:.4px currentColor}
+body:has(#bio:target) .lateral a[href="#bio"],body:has(#bio :target) .lateral a[href="#bio"]{-webkit-text-stroke:.4px currentColor}
+body:has(#taller-secreto:target) .lateral a[href="#taller-secreto"],body:has(#taller-secreto :target) .lateral a[href="#taller-secreto"]{-webkit-text-stroke:.4px currentColor}
+body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :target) .lateral a[href="#contacto"]{-webkit-text-stroke:.4px currentColor}
 </style></noscript>
 </head>
 <body>
@@ -889,7 +889,6 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 
 <h3 data-en="Group exhibitions">Exposiciones colectivas</h3>
 <dl>
-<dt>2026</dt><dd data-en="4th Drawing Biennial, Museo Franklin Rawson, San Juan.">4ª Bienal de Dibujo, Museo Franklin Rawson, San Juan.</dd>
 <dt>2025</dt><dd data-en="Premio Argentino a las Artes Visuales Fundación OSDE, Buenos Aires City.">Premio Argentino a las Artes Visuales Fundación OSDE, CABA.</dd>
 <dt>2025</dt><dd data-en="“Paciente Aproximación”, Sala Lidaura Chapitel, San Martín de los Andes.">“Paciente Aproximación”, Sala Lidaura Chapitel, San Martín de los Andes.</dd>
 <dt>2024</dt><dd data-en="TKM, Hervidero Galería, San Carlos de Bariloche.">TKM, Hervidero Galería, San Carlos de Bariloche.</dd>

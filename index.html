@@ -25,6 +25,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Inter:wght@300..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+.lbn-img.im-espacio1{background-image:url(img/espacio/como-contar-un-espacio-1-full.webp)}
+.lbn-img.im-espacio2{background-image:url(img/espacio/como-contar-un-espacio-2-full.webp)}
 .lbn-img.im-bosque1{background-image:url(img/bosque/bosque-nocturno-2019-full.webp)}
 .lbn-img.im-bosque2{background-image:url(img/bosque/bosque-nuboso-2020-full.webp)}
 .lbn-img.im-bosque3{background-image:url(img/bosque/jardin-de-invierno-i-2019-full.webp)}
@@ -464,6 +466,7 @@ body:has(#la-insistencia-de-la-sombra:target) .lateral a[href="#la-insistencia-d
 body:has(#algunos-rasgunos-disipan-la-llama:target) .lateral a[href="#algunos-rasgunos-disipan-la-llama"],body:has(#algunos-rasgunos-disipan-la-llama :target) .lateral a[href="#algunos-rasgunos-disipan-la-llama"]{font-weight:600}
 body:has(#rastros:target) .lateral a[href="#rastros"],body:has(#rastros :target) .lateral a[href="#rastros"]{font-weight:600}
 body:has(#bosque:target) .lateral a[href="#bosque"],body:has(#bosque :target) .lateral a[href="#bosque"]{font-weight:600}
+body:has(#como-contar-un-espacio:target) .lateral a[href="#como-contar-un-espacio"],body:has(#como-contar-un-espacio :target) .lateral a[href="#como-contar-un-espacio"]{font-weight:600}
 body:has(#un-lugar:target) .lateral a[href="#un-lugar"],body:has(#un-lugar :target) .lateral a[href="#un-lugar"]{font-weight:600}
 body:has(#tengo-que-contarte-algo:target) .lateral a[href="#tengo-que-contarte-algo"],body:has(#tengo-que-contarte-algo :target) .lateral a[href="#tengo-que-contarte-algo"]{font-weight:600}
 body:has(#statement:target) .lateral a[href="#statement"],body:has(#statement :target) .lateral a[href="#statement"]{font-weight:600}
@@ -485,7 +488,6 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <div class="acordeon" id="acordeon">
 <button type="button" class="principal" id="proyectos-link" aria-expanded="false" aria-controls="lista-proy" data-en="Projects">Proyectos</button>
 <div class="lista" id="lista-proy"><div class="lista-in">
-<p class="grupo" data-en="Drawing">Dibujo</p>
 <ul>
 <li class="par" id="par-insistencia">
 <div class="par-fila"><button type="button" class="par-t" aria-expanded="false" aria-controls="par-sub">La insistencia de la sombra<span class="par-b" aria-hidden="true">+</span></button></div>
@@ -497,11 +499,15 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <li><a href="#bosque">Bosque</a></li>
 </ul></div>
 </li>
+<li class="par" id="par-espacio">
+<div class="par-fila"><button type="button" class="par-t" aria-expanded="false" aria-controls="par-sub-espacio">Cómo contar un espacio<span class="par-b" aria-hidden="true">+</span></button></div>
+<div class="par-sub" id="par-sub-espacio"><ul class="par-in">
+<li><a href="#como-contar-un-espacio">Cómo contar un espacio</a></li>
+<li><a href="#un-lugar">Un lugar al que no voy a volver</a></li>
+</ul></div>
+</li>
+<li><a href="#tengo-que-contarte-algo">Tengo que contarte algo</a></li>
 </ul>
-<p class="grupo">Video</p>
-<ul><li><a href="#un-lugar">Un lugar al que no voy a volver</a></li></ul>
-<p class="grupo" data-en="Photobook">Fotolibro</p>
-<ul><li><a href="#tengo-que-contarte-algo">Tengo que contarte algo</a></li></ul>
 </div></div>
 </div>
 <a class="principal" href="#statement">Statement</a>
@@ -518,29 +524,12 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <div class="vista" id="inicio">
 <img class="portada" src="img/rastros/humo-2021-1500.webp" srcset="img/rastros/humo-2021-800.webp 800w, img/rastros/humo-2021-1200.webp 1200w, img/rastros/humo-2021-1500.webp 1500w, img/rastros/humo-2021-full.webp 2576w" sizes="(min-width:901px) 78vw, (orientation:portrait) 260vw, 100vw" width="2576" height="1942" fetchpriority="high" decoding="async" alt="" role="img" aria-label="Dibujo en carbón: obra de portada" data-en-label="Charcoal drawing: cover work">
 </div>
-<div class="vista pagina" id="obra">
-<section>
-<h2 data-en="Projects">Proyectos</h2>
-<div class="cont obra">
-<div class="flujo indice">
-<figure class="ia" style="--w:47.6;--wm:88;--ar:1.5"><a href="#la-forma-del-despojo" tabindex="-1" aria-hidden="true"><img class="im" src="img/despojo/la-forma-del-despojo-montaje-1200.webp" srcset="img/despojo/la-forma-del-despojo-montaje-1200.webp 1200w, img/despojo/la-forma-del-despojo-montaje-1500.webp 1500w" sizes="(min-width:901px) 71vw, 92vw" width="1200" height="525" loading="lazy" decoding="async" alt="" role="img" aria-label="Seis dibujos cuadrados en carbón, enmarcados en negro y dispuestos en dos filas de tres sobre una pared blanca" data-en-label="Six square charcoal drawings framed in black, arranged in two rows of three on a white wall"></a><figcaption><a href="#la-forma-del-despojo">La forma del despojo</a><br><span class="med" data-en="Drawing">Dibujo</span></figcaption></figure>
-<figure class="ia" style="--w:47.6;--wm:88;--ar:1.5"><a href="#la-insistencia-de-la-sombra" tabindex="-1" aria-hidden="true"><img class="im" src="img/insistencia/memoria-de-un-arrebato-montaje-full.webp" srcset="img/insistencia/memoria-de-un-arrebato-montaje-800.webp 600w, img/insistencia/memoria-de-un-arrebato-montaje-full.webp 896w" sizes="(min-width:901px) 46vw, 92vw" width="600" height="800" loading="lazy" decoding="async" alt="" role="img" aria-label="Tríptico enmarcado en negro sobre un estante blanco: a la izquierda fragmentos de carbón, al centro un dibujo de humo y a la derecha una superficie de mármol claro" data-en-label="Triptych framed in black on a white shelf: charcoal fragments on the left, a smoke drawing in the center and a light marble surface on the right" style="object-position:50% 58%"></a><figcaption><a href="#la-insistencia-de-la-sombra">La insistencia de la sombra</a><br><span class="med" data-en="Drawing">Dibujo</span></figcaption></figure>
-<figure class="ia" style="--w:35.4;--wm:63.3;--ar:0.7498"><a href="#algunos-rasgunos-disipan-la-llama" tabindex="-1" aria-hidden="true"><img class="im" src="img/algunos/frente-y-dorso-2023-1-1500.webp" srcset="img/algunos/frente-y-dorso-2023-1-800.webp 533w, img/algunos/frente-y-dorso-2023-1-1200.webp 800w, img/algunos/frente-y-dorso-2023-1-1500.webp 1000w" sizes="(min-width:901px) 23vw, 92vw" width="533" height="800" loading="lazy" decoding="async" alt="" role="img" aria-label="Dibujo en carbón de gran formato colgado con barras blancas y cables en una sala, con una llama blanca que sube desde la base sobre un fondo oscuro" data-en-label="Large-format charcoal drawing hung with white bars and cables in a gallery, with a white flame rising from the base on a dark background"></a><figcaption><a href="#algunos-rasgunos-disipan-la-llama">Algunos rasguños disipan la llama</a><br><span class="med" data-en="Drawing">Dibujo</span></figcaption></figure>
-<figure class="ib" style="--w:45.1;--wm:84.2;--ar:1.3267"><a href="#rastros" tabindex="-1" aria-hidden="true"><img class="im" src="img/rastros/humo-2021-1200.webp" srcset="img/rastros/humo-2021-800.webp 800w, img/rastros/humo-2021-1200.webp 1200w, img/rastros/humo-2021-1500.webp 1500w" sizes="(min-width:901px) 44vw, 92vw" width="800" height="603" loading="lazy" decoding="async" alt="" data-full="img/rastros/humo-2021-full.webp" role="img" aria-label="Dibujo en carbón abstracto de texturas claras y oscuras entrelazadas" data-en-label="Abstract charcoal drawing of intertwined light and dark textures"></a><figcaption><a href="#rastros">Rastros</a><br><span class="med" data-en="Drawing">Dibujo</span></figcaption></figure>
-<figure class="ib" style="--w:35.0;--wm:62.5;--ar:0.7312"><a href="#bosque" tabindex="-1" aria-hidden="true"><img class="im" src="img/bosque/bosque-nuboso-2020-1500.webp" srcset="img/bosque/bosque-nuboso-2020-800.webp 800w, img/bosque/bosque-nuboso-2020-1200.webp 878w, img/bosque/bosque-nuboso-2020-1500.webp 1181w" sizes="(min-width:901px) 24vw, 92vw" width="800" height="1094" loading="lazy" decoding="async" alt="" data-full="img/bosque/bosque-nuboso-2020-full.webp" role="img" aria-label="Dibujo en carbón de un bosque de coníferas sobre una ladera, con niebla entre los árboles" data-en-label="Charcoal drawing of a conifer forest on a hillside, with mist between the trees"></a><figcaption><a href="#bosque">Bosque</a><br><span class="med" data-en="Drawing">Dibujo</span></figcaption></figure>
-<figure class="ib" style="--w:47.6;--wm:88;--ar:1.5"><a href="#un-lugar" tabindex="-1" aria-hidden="true"><img class="im" src="img/un-lugar/fotograma.webp" width="1280" height="719" loading="lazy" decoding="async" alt="" role="img" aria-label="Fotograma del corto Un lugar al que no voy a volver" data-en-label="Still from the short film Un lugar al que no voy a volver"></a><figcaption><a href="#un-lugar">Un lugar al que no voy a volver</a><br><span class="med">Video, 2026</span></figcaption></figure>
-<figure class="ia" style="--w:47.6;--wm:88;--ar:1.5038"><a href="#tengo-que-contarte-algo" tabindex="-1" aria-hidden="true"><img class="im" src="img/fotolibro/detalle-10-1200.webp" srcset="img/fotolibro/detalle-10-800.webp 800w, img/fotolibro/detalle-10-1200.webp 1200w, img/fotolibro/detalle-10-1500.webp 1500w" sizes="(min-width:901px) 45vw, 92vw" width="800" height="532" loading="lazy" decoding="async" alt="" role="img" aria-label="Detalle de una placa negra con la frase «tengo que contarte algo» escrita a mano en trazo blanco" data-en-label="Detail of a black plate with the phrase “tengo que contarte algo” handwritten in white strokes"></a><figcaption><a href="#tengo-que-contarte-algo">Tengo que contarte algo</a><br><span class="med">Fotolibro</span></figcaption></figure>
-</div>
-</div>
-</section>
-</div>
 <div class="vista pagina" id="la-forma-del-despojo">
 <section class="ancha">
 <h2 data-en="Projects">Proyectos</h2>
 <div class="cont obra">
 <article class="pieza">
 <h3>La forma del despojo</h3>
-<p class="dato" data-en="Drawing">Dibujo</p>
 <div class="flujo obras">
 <div class="rf agrupa">
 <figure style="--ar:0.72"><img class="im" src="img/manta/poliptico-2-1585-1200.webp" srcset="img/manta/poliptico-2-1585-800.webp 800w, img/manta/poliptico-2-1585-1200.webp 1200w, img/manta/poliptico-2-1585-1500.webp 1500w" sizes="(min-width:901px) 12vw, 46vw" width="800" height="1111" loading="lazy" decoding="async" alt="" data-full="img/manta/poliptico-2-1585-1500.webp" data-solo data-solo-alt="Políptico completo: doce dibujos en carbón sobre papel" data-solo-alt-en="Full polyptych: twelve charcoal drawings on paper" data-solo-cap="Sin título, 2026. Políptico, carbón y grafito sobre papel, 142 x 62 cm." data-solo-cap-en="Untitled, 2026. Polyptych, charcoal and graphite on paper, 142 x 62 cm." role="img" aria-label="Dibujo en carbón de una hoja clara con un texto escrito a mano y, en el centro, una forma oscura en rombo" data-en-label="Charcoal drawing of a light sheet with handwritten text and, at the center, a dark diamond-shaped form"><a class="zoom" id="f-poli2-1" href="#z-poli2-1" aria-label="Ampliar imagen"></a><figcaption data-en="Untitled, 2026. Polyptych, charcoal and graphite on paper, 142 x 62 cm. Panel 1 of 12.">Sin título, 2026. Políptico, carbón y grafito sobre papel, 142 x 62 cm. Panel 1 de 12.</figcaption></figure>
@@ -676,7 +665,6 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <div class="cont obra">
 <article class="pieza">
 <h3>Rastros</h3>
-<p class="dato" data-en="Drawing">Dibujo</p>
 <div class="flujo obras">
 <figure class="video"><a class="video-poster" href="https://www.youtube.com/watch?v=FZeJBHQjBXs" target="_blank" rel="noopener" aria-label="Ver el video de Rastros en YouTube" data-en-label="Watch the Rastros video on YouTube"><span class="play" aria-hidden="true"></span></a></figure>
 <div class="rf">
@@ -721,7 +709,6 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <div class="cont obra">
 <article class="pieza">
 <h3>Bosque</h3>
-<p class="dato" data-en="Drawing">Dibujo</p>
 <div class="flujo obras">
 <div class="rf">
 <figure style="--ar:0.724"><img class="im" src="img/bosque/bosque-2020-1500.webp" srcset="img/bosque/bosque-2020-800.webp 800w, img/bosque/bosque-2020-1200.webp 869w, img/bosque/bosque-2020-1500.webp 1500w" sizes="(min-width:901px) 23vw, 45vw" width="800" height="1105" loading="lazy" decoding="async" alt="" data-full="img/bosque/bosque-2020-full.webp" role="img" aria-label="Dibujo en carbón de un bosque oscuro de troncos delgados, con un haz de luz al centro y un sendero en primer plano" data-en-label="Charcoal drawing of a dark forest of slender trunks, with a beam of light in the center and a path in the foreground"><a class="zoom" id="f-bosque7" href="#z-bosque7" aria-label="Ampliar imagen"></a><figcaption data-en="Bosque, 2020. Charcoal on paper, 25 x 18 cm.">Bosque, 2020. Carbón sobre papel, 25 x 18 cm.</figcaption></figure>
@@ -744,7 +731,7 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <figure style="--ar:1.5119"><img class="im" src="img/bosque/jardin-de-invierno-ii-2019-1200.webp" srcset="img/bosque/jardin-de-invierno-ii-2019-800.webp 800w, img/bosque/jardin-de-invierno-ii-2019-1200.webp 1200w, img/bosque/jardin-de-invierno-ii-2019-1500.webp 1500w" sizes="(min-width:901px) 71vw, 92vw" width="800" height="529" loading="lazy" decoding="async" alt="" data-full="img/bosque/jardin-de-invierno-ii-2019-full.webp" role="img" aria-label="Dibujo en carbón de un bosque cubierto de niebla, con copas de árboles que emergen en la parte superior" data-en-label="Charcoal drawing of a mist-covered forest, with treetops emerging at the top"><a class="zoom" id="f-bosque4" href="#z-bosque4" aria-label="Ampliar imagen"></a><figcaption data-en="Jardín de invierno II, 2019. Charcoal on paper, 18 x 25 cm.">Jardín de invierno II, 2019. Carbón sobre papel, 18 x 25 cm.</figcaption></figure>
 </div>
 </div>
-<nav class="vol" aria-label="Entre proyectos" data-en-label="Between projects"><a class="vol-menu" href="#panel" data-en="← Projects">← Proyectos</a><a class="vol-sig" href="#un-lugar" data-en="Next project →">Siguiente proyecto →</a></nav>
+<nav class="vol" aria-label="Entre proyectos" data-en-label="Between projects"><a class="vol-menu" href="#panel" data-en="← Projects">← Proyectos</a><a class="vol-sig" href="#como-contar-un-espacio" data-en="Next project →">Siguiente proyecto →</a></nav>
 </article>
 </div>
 </section>
@@ -759,13 +746,33 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <div class="lbn" id="z-bosque11" role="dialog" aria-label="Imagen ampliada"><a class="lbn-x" href="#f-bosque11" aria-label="Cerrar">&#215;</a><a class="lbn-p" href="#z-bosque9" aria-label="Anterior">&#8249;</a><a class="lbn-n" href="#z-bosque4" aria-label="Siguiente">&#8250;</a><div class="lbn-img im-bosque11" role="img" aria-label="Dibujo en carbón de un camino entre troncos altos y oscuros, en una doble página de cuaderno" data-en-label="Charcoal drawing of a path between tall, dark trunks, across a double page of a notebook"></div><p class="lbn-cap" data-en="&lt;b&gt;Camino viejo a Colonia Suiza, 2019&lt;/b&gt;Charcoal on paper."><b>Camino viejo a Colonia Suiza, 2019</b>Carbón sobre papel.</p></div>
 <div class="lbn" id="z-bosque4" role="dialog" aria-label="Imagen ampliada"><a class="lbn-x" href="#f-bosque4" aria-label="Cerrar">&#215;</a><a class="lbn-p" href="#z-bosque11" aria-label="Anterior">&#8249;</a><a class="lbn-n" href="#z-bosque7" aria-label="Siguiente">&#8250;</a><div class="lbn-img im-bosque4" role="img" aria-label="Dibujo en carbón de un bosque cubierto de niebla, con copas de árboles que emergen en la parte superior" data-en-label="Charcoal drawing of a mist-covered forest, with treetops emerging at the top"></div><p class="lbn-cap" data-en="&lt;b&gt;Jardín de invierno II, 2019&lt;/b&gt;Charcoal on paper, 18 x 25 cm."><b>Jardín de invierno II, 2019</b>Carbón sobre papel, 18 x 25 cm.</p></div>
 </div>
+<div class="vista pagina" id="como-contar-un-espacio">
+<section class="ancha">
+<h2 data-en="Projects">Proyectos</h2>
+<div class="cont obra">
+<article class="pieza">
+<h3>Cómo contar un espacio</h3>
+<div class="flujo obras">
+<div class="rf">
+<figure style="--ar:1.5003"><img class="im" src="img/espacio/como-contar-un-espacio-1-1200.webp" srcset="img/espacio/como-contar-un-espacio-1-800.webp 800w, img/espacio/como-contar-un-espacio-1-1200.webp 1200w, img/espacio/como-contar-un-espacio-1-1500.webp 1500w" sizes="(min-width:901px) 71vw, 92vw" width="800" height="533" loading="lazy" decoding="async" alt="" data-full="img/espacio/como-contar-un-espacio-1-full.webp" role="img" aria-label="Montaña de picos oscuros con manchas de nieve bajo un cielo gris, con aves volando" data-en-label="Mountain of dark peaks with patches of snow under a gray sky, with birds flying"><a class="zoom" id="f-espacio1" href="#z-espacio1" aria-label="Ampliar imagen"></a></figure>
+</div>
+<div class="rf">
+<figure style="--ar:1.5003"><img class="im" src="img/espacio/como-contar-un-espacio-2-1200.webp" srcset="img/espacio/como-contar-un-espacio-2-800.webp 800w, img/espacio/como-contar-un-espacio-2-1200.webp 1200w, img/espacio/como-contar-un-espacio-2-1500.webp 1500w" sizes="(min-width:901px) 71vw, 92vw" width="800" height="533" loading="lazy" decoding="async" alt="" data-full="img/espacio/como-contar-un-espacio-2-full.webp" role="img" aria-label="Persona con campera roja sobre el marco de una abertura, en una pared de fardos de paja cruzada por listones de madera en diagonal" data-en-label="Person in a red jacket standing on the frame of an opening in a straw-bale wall crossed by diagonal wooden slats"><a class="zoom" id="f-espacio2" href="#z-espacio2" aria-label="Ampliar imagen"></a><figcaption data-en="Cómo contar un espacio, 2025.">Cómo contar un espacio, 2025.</figcaption></figure>
+</div>
+</div>
+<nav class="vol" aria-label="Entre proyectos" data-en-label="Between projects"><a class="vol-menu" href="#panel" data-en="← Projects">← Proyectos</a><a class="vol-sig" href="#un-lugar" data-en="Next project →">Siguiente proyecto →</a></nav>
+</article>
+</div>
+</section>
+<div class="lbn" id="z-espacio1" role="dialog" aria-label="Imagen ampliada"><a class="lbn-x" href="#f-espacio1" aria-label="Cerrar">&#215;</a><a class="lbn-p" href="#z-espacio2" aria-label="Anterior">&#8249;</a><a class="lbn-n" href="#z-espacio2" aria-label="Siguiente">&#8250;</a><div class="lbn-img im-espacio1" role="img" aria-label="Montaña de picos oscuros con manchas de nieve bajo un cielo gris, con aves volando" data-en-label="Mountain of dark peaks with patches of snow under a gray sky, with birds flying"></div><p class="lbn-cap" data-en="&lt;b&gt;Cómo contar un espacio, 2025&lt;/b&gt;"><b>Cómo contar un espacio, 2025</b></p></div>
+<div class="lbn" id="z-espacio2" role="dialog" aria-label="Imagen ampliada"><a class="lbn-x" href="#f-espacio2" aria-label="Cerrar">&#215;</a><a class="lbn-p" href="#z-espacio1" aria-label="Anterior">&#8249;</a><a class="lbn-n" href="#z-espacio1" aria-label="Siguiente">&#8250;</a><div class="lbn-img im-espacio2" role="img" aria-label="Persona con campera roja sobre el marco de una abertura, en una pared de fardos de paja cruzada por listones de madera en diagonal" data-en-label="Person in a red jacket standing on the frame of an opening in a straw-bale wall crossed by diagonal wooden slats"></div><p class="lbn-cap" data-en="&lt;b&gt;Cómo contar un espacio, 2025&lt;/b&gt;"><b>Cómo contar un espacio, 2025</b></p></div>
+</div>
 <div class="vista pagina" id="un-lugar">
 <section class="ancha">
 <h2 data-en="Projects">Proyectos</h2>
 <div class="cont obra">
 <article class="pieza">
 <h3>Un lugar al que no voy a volver</h3>
-<p class="dato" data-en="Experimental short film, 2026">Corto experimental, 2026</p>
 <figure class="video tcvideo"><a class="video-poster" href="https://www.youtube.com/watch?v=cJaFY5IWnYM" target="_blank" rel="noopener" style="background-image:url(img/un-lugar/fotograma.webp)" aria-label="Ver el video de Un lugar al que no voy a volver en YouTube" data-en-label="Watch the video of Un lugar al que no voy a volver on YouTube"><span class="play" aria-hidden="true"></span></a></figure>
 <div class="texto-lectura">
 <p data-en="&lt;span class=&quot;abre&quot;&gt;Will houses dream of those who inhabit them?&lt;/span&gt;Sustained by an anticipated nostalgia, I say goodbye to a transitory state, capturing the trace of time becoming matter. I move, in an animal way, through the gentle time of what will soon be covered by an inevitable skin. An outside I cannot ignore urges me on: the landscape of which I am beginning to be a part."><span class="abre">¿Soñarán las casas con quienes las habitan?</span>Sostenida en una nostalgia anticipada, me despido de un estado transitorio, capturo la huella del tiempo deviniendo en materia. Recorro, de forma animal, el tiempo apacible de lo que pronto quedará cubierto por una inevitable piel. Me apura un afuera del que no puedo desentenderme: el paisaje del que empiezo a formar parte.</p>
@@ -786,7 +793,6 @@ body:has(#contacto:target) .lateral a[href="#contacto"],body:has(#contacto :targ
 <div class="cont obra">
 <article class="pieza">
 <h3>Tengo que contarte algo</h3>
-<p class="dato" data-en="Photobook">Fotolibro</p>
 <figure class="video tcvideo"><a class="video-poster" href="https://www.youtube.com/watch?v=ywsBgnLzM14" target="_blank" rel="noopener" style="background-image:url(img/fotolibro/video-poster.webp)" aria-label="Ver el video de Tengo que contarte algo en YouTube" data-en-label="Watch the video of Tengo que contarte algo on YouTube"><span class="play" aria-hidden="true"></span></a></figure>
 <p class="pie-texto" data-en="A piece of paper slides under the door. I pick it up along with the bills to pay and see that it is a handwritten note. The message is illegible; I can only make out the name Nelly.&lt;br&gt;When the pandemic began, and with it the mandatory quarantine, a very elderly neighbor, a widow, leaves me requests for help. She is alone and deaf. The days pass, or rather crawl unbearably, while I keep her notes like an inexplicable archive.">Por debajo de la puerta se desliza un papel. Lo levanto junto a las facturas a pagar y veo que es una nota manuscrita. El mensaje es ilegible, sólo logro reconocer el nombre Nelly.<br>Al comenzar la pandemia y con ella la cuarentena obligatoria, una vecina muy mayor, viuda, me deja pedidos de ayuda. Está sola y sorda. Los días corren, o más bien caminan insoportables, mientras guardo sus notas como un archivo inexplicable.</p>
 <div class="credito"><p data-en="Published in 2024 by Bulbo Editorial, a self-managed press, with the support of Mecenazgo Cultural BA.">Publicado en 2024 por Bulbo Editorial, editorial autogestiva, con el apoyo de Mecenazgo Cultural BA.</p></div>
@@ -978,9 +984,9 @@ bis.forEach(function(bi){bi.addEventListener('click',function(){aplicar(h.datase
 var ac=document.getElementById('acordeon'),pl=document.getElementById('proyectos-link');
 function abrirAc(a){pl.setAttribute('aria-expanded',a?'true':'false');ac.classList.toggle('abierto',a)}
 pl.addEventListener('click',function(){abrirAc(pl.getAttribute('aria-expanded')!=='true')});
-var pp=document.getElementById('par-insistencia'),pb=pp.querySelector('.par-t'),pm=pp.querySelector('.par-b');
-function abrirPar(a){pp.classList.toggle('abierto',a);pb.setAttribute('aria-expanded',a?'true':'false');pm.textContent=a?'\u2013':'+'}
-pb.addEventListener('click',function(){abrirPar(!pp.classList.contains('abierto'))});
+var pars=[].slice.call(document.querySelectorAll('.par'));
+function abrirPar(pp,a){pp.classList.toggle('abierto',a);pp.querySelector('.par-t').setAttribute('aria-expanded',a?'true':'false');pp.querySelector('.par-b').textContent=a?'\u2013':'+'}
+pars.forEach(function(pp){pp.querySelector('.par-t').addEventListener('click',function(){abrirPar(pp,!pp.classList.contains('abierto'))})});
 var lat=document.getElementById('lateral'),mb=lat.querySelector('.menu-btn');
 mb.addEventListener('click',function(){
   var a=lat.classList.toggle('abierto');
@@ -1000,7 +1006,7 @@ function ruta(){
   document.title=(id==='inicio'||!t)?'Agustina Recayte — Artista visual':t.textContent+' — Agustina Recayte';
   lat.classList.remove('abierto');mb.setAttribute('aria-expanded','false');
   if(ac.querySelector('a[href="#'+id+'"]'))abrirAc(true);
-  if(pp.querySelector('a[href="#'+id+'"]'))abrirPar(true);
+  pars.forEach(function(pp){if(pp.querySelector('a[href="#'+id+'"]'))abrirPar(pp,true)});
   window.scrollTo(0,0);
 }
 window.addEventListener('hashchange',ruta);ruta();
